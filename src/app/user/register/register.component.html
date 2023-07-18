@@ -12,6 +12,10 @@
                 <form>
                     <!-- Username input -->
                     <div class="form-outline mb-4">
+                        <label
+                            class="form-label"
+                            for="username"
+                        ><i class="fas fa-user"></i> Username</label>
                         <input
                             type="text"
                             id="username"
@@ -19,13 +23,13 @@
                             placeholder="Enter an username"
                             name="username"
                         />
-                        <label
-                            class="form-label"
-                            for="username"
-                        >Username</label>
                     </div>
                     <!-- Email input -->
                     <div class="form-outline mb-4">
+                        <label
+                            class="form-label"
+                            for="email"
+                        ><span><i class="fas fa-envelope"></i></span> Email address</label>
                         <input
                             type="email"
                             id="email"
@@ -33,13 +37,15 @@
                             class="form-control form-control-lg is-invalid"
                             placeholder="Enter a valid email address"
                         />
-                        <label
-                            class="form-label"
-                            for="email"
-                        >Email address</label>
                     </div>
 
                     <!-- Password input -->
+                    <label
+                        class="form-label"
+                        for="password"
+                    ><span><i class="fas fa-lock"></i></span>
+                        Password
+                    </label>
                     <div class="form-outline mb-3">
                         <input
                             type="password"
@@ -48,13 +54,13 @@
                             class="form-control form-control-lg is-valid"
                             placeholder="Enter password"
                         />
-                        <label
-                            class="form-label"
-                            for="password"
-                        >Password</label>
                     </div>
 
                     <!-- repeat password input -->
+                    <label
+                        class="form-label"
+                        for="rePass"
+                    ><span><i class="fas fa-unlock"></i></span> Repeat password</label>
                     <div class="form-outline mb-3">
                         <input
                             type="password"
@@ -63,10 +69,6 @@
                             class="form-control form-control-lg is-valid"
                             placeholder="Repaeat password"
                         />
-                        <label
-                            class="form-label"
-                            for="rePass"
-                        >Repeat password</label>
                     </div>
 
 
