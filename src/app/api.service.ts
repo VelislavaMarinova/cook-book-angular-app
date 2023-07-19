@@ -8,10 +8,16 @@ import { Recipe } from './types/recipe';
 })
 export class ApiService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getRecipes(){
-    const {appUrl}=environment
-   return this.http.get<Recipe[]>(`${appUrl}/recipes`);
+  getRecipes() {
+    const { appUrl } = environment
+    return this.http.get<Recipe[]>(`${appUrl}/recipes`);
+  }
+
+  getRecipe(id: string) {
+    const { appUrl } = environment;
+    return this.http.get<Recipe>(`${appUrl}/recipes/${id}`)
+
   }
 }

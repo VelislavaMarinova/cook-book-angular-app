@@ -5,6 +5,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { RecipeRoutingModule } from './recipe-routing.module';
+import { UserModule } from '../user/user.module';
 
 
 
@@ -17,7 +18,8 @@ import { RecipeRoutingModule } from './recipe-routing.module';
   imports: [
     CommonModule,
     SharedModule, 
-    RecipeRoutingModule
+    RecipeRoutingModule,
+    // UserModule
   ]
 })
 export class RecipeModule { }

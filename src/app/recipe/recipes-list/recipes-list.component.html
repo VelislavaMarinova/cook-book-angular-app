@@ -3,7 +3,13 @@
         <app-loader />
     </div>
     <div *ngIf="!isLoading">
-        <p *ngFor="let recipe of recipeList">{{recipe.title}}</p>
+        <div *ngFor="let recipe of recipeList">
+            <a [routerLink]="recipe._id">
+                <h2 >{{recipe.title}}</h2>
+
+            </a>
+
+        </div>
     </div>
     
     <div *ngIf="noRecipesInTheList">

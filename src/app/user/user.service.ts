@@ -19,7 +19,7 @@ export class UserService {
       const localStorageUser = localStorage.getItem(this.USER_KEY) || "";
       this.user = JSON.parse(localStorageUser)
     } catch (error) {
-
+      this.user = undefined
     }
   }
 
