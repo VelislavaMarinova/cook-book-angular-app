@@ -16,6 +16,7 @@ import { UserRoutingModule } from './user-routing.module';
   imports: [
     CommonModule,
     UserRoutingModule,
+    
   ]
 })
 export class UserModule { }
