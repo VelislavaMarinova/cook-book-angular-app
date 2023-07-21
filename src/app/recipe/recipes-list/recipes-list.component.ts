@@ -11,6 +11,7 @@ export class RecipesListComponent {
   recipeList: Recipe[] = [];
   isLoading: boolean = true;
   noRecipesInTheList: boolean = false;
+  categorySet = new Set()
 
   constructor(private apiService: ApiService) { }
 
@@ -24,9 +25,15 @@ export class RecipesListComponent {
           if (this.recipeList.length === 0) {
             this.noRecipesInTheList = true;
           }
-          
+
           this.isLoading = false
           console.log(recipes)
+          // recipes.forEach(r => {
+          //   this.categorySet.add(r.category)
+          // })
+          // console.log(this.categorySet);
+
+
         },
         error: (err) => {
           this.isLoading = false
