@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/types/recipe';
 import { UserService } from 'src/app/user/user.service';
@@ -9,8 +9,12 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './recipe-details.component.html',
   styleUrls: ['./recipe-details.component.css']
 })
-export class RecipeDetailsComponent implements OnInit{
+export class RecipeDetailsComponent implements OnInit {
   recipe: Recipe | undefined
+  isLoading: boolean = true;
+
+  id: string = '';
+
 
   constructor(
     private userService: UserService,
@@ -24,18 +28,47 @@ export class RecipeDetailsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.fetchRecipe();
-  }
-  fetchRecipe(): void {
-    const id = this.activatedRoute.snapshot.params['recipeId'];
-    this.apiService.getRecipe(id).subscribe((fetchedRecipe) => {
-      this.recipe = fetchedRecipe;
-      console.log(id);
-      
-      console.log(this.recipe);
-      
+
+    // this.fetchRecipe();
+
+    this.activatedRoute.params.subscribe((params: Params) => {
+      //from params id comes as a string, so it is need to be cast to number
+      this.id = params['recipeId'];
+
+      this.apiService.getRecipe(this.id).subscribe(
+        {
+          next: (fetchedRecipe) => {
+            this.recipe = fetchedRecipe;
+            this.isLoading = false
+            console.log(this.recipe);
+          },
+          error: (err) => {
+            this.isLoading = false
+            console.log(`Error ${err}`);
+
+          }
+        })
+
+      // this.recipe = this.recipeService.getOneRecipe(this.id)
     })
   }
+  // fetchRecipe(id:string ): void {
+  //   // const id = this.activatedRoute.snapshot.params['recipeId'];
+  //   this.apiService.getRecipe(id).subscribe(
+  //     {
+  //       next: (fetchedRecipe) => {
+  //         this.recipe = fetchedRecipe;
+  //         this.isLoading = false
+  //         console.log(this.recipe);
+  //       },
+  //       error: (err) => {
+  //         this.isLoading = false
+  //         console.log(`Error ${err}`);
+
+  //       }
+  //     }
+  //   )
+  // }
 
 
 }

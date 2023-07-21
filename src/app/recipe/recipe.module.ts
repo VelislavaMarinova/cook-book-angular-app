@@ -6,6 +6,9 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { UserModule } from '../user/user.module';
+import { RecipesMainComponent } from './recipes-main/recipes-main.component';
+import { RecipeStartComponent } from './recipe-start/recipe-start.component';
+import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 
 
 
@@ -13,7 +16,10 @@ import { UserModule } from '../user/user.module';
   declarations: [
     NewRecipeComponent,
     RecipeDetailsComponent,
-    RecipesListComponent
+    RecipesListComponent,
+    RecipesMainComponent,
+    RecipeStartComponent,
+    RecipeItemComponent
   ],
   imports: [
     CommonModule,

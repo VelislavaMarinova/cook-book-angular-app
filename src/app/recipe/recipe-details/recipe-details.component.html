@@ -1,1 +1,7 @@
-<p>recipe-details works!</p>
+<section>
+
+    <div *ngIf="isLoading">
+        <app-loader />
+    </div>
+    <p>recipe-details works!{{recipe?.title}}</p>
+</section>

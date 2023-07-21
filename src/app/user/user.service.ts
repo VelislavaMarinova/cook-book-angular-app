@@ -27,6 +27,7 @@ export class UserService {
     this.user = {
       username: "pcpcpc",
       email: 'pcpc@sdsd.com',
+      gender: 'male'
     }
 
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user))

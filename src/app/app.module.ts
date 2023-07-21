@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { RecipesListComponent } from './recipe/recipes-list/recipes-list.component';
 import { RecipeModule } from './recipe/recipe.module';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RecipeModule } from './recipe/recipe.module';
     SharedModule,
     UserModule,
     RecipeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
