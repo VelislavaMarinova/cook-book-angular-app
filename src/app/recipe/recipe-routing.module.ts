@@ -4,18 +4,19 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { AuthGuard } from '../core/guards/authGuard';
+import { RecipesMainComponent } from './recipes-main/recipes-main.component';
+import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 
 
 const routes: Routes = [
   {
     path: 'recipes',
-    children:[
+    component: RecipesMainComponent,
+    children: [
       {
-        path:'',
-        pathMatch: 'full',
-        component: RecipesListComponent
-      },
-      {
+        path: '',
+        component: RecipeStartComponent
+      },{
         path: ':recipeId',
         component: RecipeDetailsComponent
       }
@@ -25,12 +26,12 @@ const routes: Routes = [
     path: 'add-recipe',
     component: NewRecipeComponent,
     canActivate: [AuthGuard]
-    
+
   },
   // {
   //   path: 'profile',
- 
-    
+
+
   // }
 ];
 

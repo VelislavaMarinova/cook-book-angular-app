@@ -9,7 +9,7 @@
         >
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
           <!-- Email input -->
           <div class="form-outline mb-4">
             <label
@@ -17,13 +17,18 @@
               for="email"
             ><span><i class="fas fa-envelope"></i></span> Email address</label>
             <input
-              type="email"
-              id="email"
-              name="email"
-              class="form-control form-control-lg is-invalid"
-              placeholder="Enter a valid email address"
-              #inputEmail
+            type="email"
+            id="email"
+            name="email"
+            class="form-control form-control-lg"
+            placeholder="Enter a valid email address"
+            ngModel
+            required
+            email
+            #email="ngModel"
             />
+            <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a vailid email!</span>
+
           </div>
 
           <!-- Password input -->
@@ -35,21 +40,26 @@
           </label>
           <div class="form-outline mb-3">
             <input
-              type="password"
-              id="password"
-              name="password"
-              class="form-control form-control-lg is-valid"
-              placeholder="Enter password"
-              #inputPassword
-            />
+            type="password"
+            id="password"
+            name="password"
+            class="form-control form-control-lg"
+            placeholder="Enter password"
+            ngModel
+            required
+            #password="ngModel"
+        />
+        <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a vailid password!</span>
+
+
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
             <button
-              type="button"
-              class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;"
-              (click)="login(inputEmail.value, inputPassword.value)"
+            type="submit"
+            class="btn btn-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;"
+            [disabled]="!f.valid"
             >Login</button>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a
                 routerLink="/register"

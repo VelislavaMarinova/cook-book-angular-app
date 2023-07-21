@@ -6,8 +6,8 @@ body {
   height: 100%;
 }
 section {
-  height: 81%;
-  padding: 5%;
+  height: 85%;
+  padding: 10px 20px;
 }
 
 .btn-primary {
@@ -18,6 +18,12 @@ section {
   background-color: antiquewhite;
   border: 2px solid rgba(76, 55, 55, 0.5);
   color: var(--bs-body-color);
+}
+.btn-primary:disabled{
+
+  background-color: lightgray;
+  border: 1px solid grey;
+  color: grey
 }
 
 a {
