@@ -12,6 +12,7 @@ import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { RecipeCategoriesComponent } from './recipe-categories/recipe-categories.component';
 import { RecipeCategoryItemComponent } from './recipe-category-item/recipe-category-item.component';
 import { RecipeListByCategoryComponent } from './recipe-list-by-category/recipe-list-by-category.component';
+import { ShortenPipe } from '../shared/pipes/shorten.pipe';
 
 
 
@@ -31,7 +32,6 @@ import { RecipeListByCategoryComponent } from './recipe-list-by-category/recipe-
     CommonModule,
     SharedModule, 
     RecipeRoutingModule,
-    // UserModule
   ]
 })
 export class RecipeModule { }
