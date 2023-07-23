@@ -11,7 +11,7 @@ export class RecipesListComponent {
   recipeList: Recipe[] = [];
   isLoading: boolean = true;
   noRecipesInTheList: boolean = false;
-  categorySet = new Set()
+  // categorySet = new Set()
 
   constructor(private apiService: ApiService) { }
 
