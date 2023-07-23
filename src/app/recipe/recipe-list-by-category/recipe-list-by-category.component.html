@@ -1,0 +1,29 @@
+<section class="recipe-list">
+    <div *ngIf="isLoading">
+      <app-loader />
+    </div>
+    <div *ngIf="!isLoading" class ="scroll-container">
+      <div class="row">
+        <div class="col-xs-12 border">
+          <app-recipe-item
+            *ngFor="let selectedRecipe of recipes; "
+            [recipe]="selectedRecipe"
+           
+          ></app-recipe-item>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <!-- <div *ngFor="let recipe of recipeList">
+              <a [routerLink]="recipe._id">
+                  <h2 >{{recipe.title}}</h2>
+  
+              </a>
+  
+          </div> -->
+    </div>
+  
+    <!-- <div *ngIf="noRecipesInTheList">
+      There are no recipes. You can <a href="">add recipe</a>.
+    </div> -->
+  
+  </section>

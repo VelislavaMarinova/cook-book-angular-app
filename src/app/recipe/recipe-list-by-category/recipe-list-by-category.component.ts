@@ -5,15 +5,15 @@ import { Recipe } from 'src/app/types/recipe';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
-  selector: 'app-recipe-details',
-  templateUrl: './recipe-details.component.html',
-  styleUrls: ['./recipe-details.component.css']
+  selector: 'app-recipe-list-by-category',
+  templateUrl: './recipe-list-by-category.component.html',
+  styleUrls: ['./recipe-list-by-category.component.css']
 })
-export class RecipeDetailsComponent  {
-  recipe: Recipe | undefined
+export class RecipeListByCategoryComponent implements OnInit {
+  recipes: Recipe[] | undefined
   isLoading: boolean = true;
 
-  id: string = '';
+  category: string = '';
 
 
   constructor(
@@ -33,14 +33,14 @@ export class RecipeDetailsComponent  {
 
     this.activatedRoute.params.subscribe((params: Params) => {
       //from params id comes as a string, so it is need to be cast to number
-      this.id = params['recipeId'];
+      this.category = params['category'];
 
-      this.apiService.getRecipe(this.id).subscribe(
+      this.apiService.getRecipes().subscribe(
         {
-          next: (fetchedRecipe) => {
-            this.recipe = fetchedRecipe;
+          next: (recipes) => {
+            this.recipes = recipes.filter(r=>r.category === this.category);
             this.isLoading = false
-            console.log(this.recipe);
+            // this.recipes.filter(r=>r.category === this.category)
           },
           error: (err) => {
             this.isLoading = false
@@ -52,23 +52,4 @@ export class RecipeDetailsComponent  {
       // this.recipe = this.recipeService.getOneRecipe(this.id)
     })
   }
-  // fetchRecipe(id:string ): void {
-  //   // const id = this.activatedRoute.snapshot.params['recipeId'];
-  //   this.apiService.getRecipe(id).subscribe(
-  //     {
-  //       next: (fetchedRecipe) => {
-  //         this.recipe = fetchedRecipe;
-  //         this.isLoading = false
-  //         console.log(this.recipe);
-  //       },
-  //       error: (err) => {
-  //         this.isLoading = false
-  //         console.log(`Error ${err}`);
-
-  //       }
-  //     }
-  //   )
-  // }
-
-
 }

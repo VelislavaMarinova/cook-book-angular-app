@@ -9,6 +9,9 @@ import { UserModule } from '../user/user.module';
 import { RecipesMainComponent } from './recipes-main/recipes-main.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
+import { RecipeCategoriesComponent } from './recipe-categories/recipe-categories.component';
+import { RecipeCategoryItemComponent } from './recipe-category-item/recipe-category-item.component';
+import { RecipeListByCategoryComponent } from './recipe-list-by-category/recipe-list-by-category.component';
 
 
 
@@ -19,7 +22,10 @@ import { RecipeItemComponent } from './recipe-item/recipe-item.component';
     RecipesListComponent,
     RecipesMainComponent,
     RecipeStartComponent,
-    RecipeItemComponent
+    RecipeItemComponent,
+    RecipeCategoriesComponent,
+    RecipeCategoryItemComponent,
+    RecipeListByCategoryComponent,
   ],
   imports: [
     CommonModule,
