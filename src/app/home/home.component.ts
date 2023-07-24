@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+
+    this.onFetchRecipes()
+  }
+  onFetchRecipes() {
     this.apiService.getRecipes().subscribe(
       {
         next: (recipes) => {
@@ -24,7 +28,7 @@ export class HomeComponent implements OnInit {
           if (this.recipeList.length === 0) {
             this.noRecipesInTheList = true;
           }
-          
+
           this.isLoading = false
           console.log(recipes)
         },
@@ -33,8 +37,6 @@ export class HomeComponent implements OnInit {
           console.log(`Error ${err}`);
 
         }
-      }
-    );
-
+      })
   }
 }

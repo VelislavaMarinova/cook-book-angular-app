@@ -23,9 +23,9 @@ export class RecipeListByCategoryComponent implements OnInit {
   ) { }
 
   //use isLogged for logic in detailsPage
-  get isLogged(): boolean {
-    return this.userService.isLogged
-  }
+  // get isLogged(): boolean {
+  //   return this.userService.isLogged
+  // }
 
   ngOnInit(): void {
 

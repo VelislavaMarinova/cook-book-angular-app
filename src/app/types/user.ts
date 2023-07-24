@@ -1,6 +1,14 @@
-export interface User {
-    username: string;
-    email: string;
-    gender: string
+export class User {
+
+  constructor(
+    public _id:string,
+    public username: string,
+    public email: string,
+    private accessToken: string
+  ){}
+
+ 
+  
+}
     // password: string;
-  }
+  

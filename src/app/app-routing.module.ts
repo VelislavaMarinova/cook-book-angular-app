@@ -11,7 +11,15 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
-  }
+  },
+  // { path: '**', component: NotFoundComponent },
+  // {
+  //   path: 'auth',
+  //   loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  // },
+  // { path: 'error', component: ErrorComponent },
+
+  // { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
