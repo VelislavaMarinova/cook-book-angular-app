@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -7,23 +8,44 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
+  isAuthenticated = false;
+  private userSub!: Subscription;
+  username: string | undefined;
 
   constructor(
     private userService: UserService,
     private router: Router
   ) { }
 
-  get isLoggedIn(): boolean {
-    return this.userService.isLogged
+
+  ngOnInit() {
+    console.log(this.userService.user$$, "HeaderComponent");
+    this.userService.user$$.subscribe(user => console.log(user)
+    )
+
+    this.userSub = this.userService.user$$.subscribe(user => {
+      this.isAuthenticated = !!user;
+      this.username=user?.username
+      console.log(user?.username, 'user');
+      console.log(!!user);
+    });
   }
 
-  get username(): string {
-    return this.userService.user?.username || '';
-  }
+  // get isLoggedIn(): boolean {
+  //   return this.userService.isLogged
+  // }
+
+  // get username(): string {
+  //   return this.userService.user?.username || '';
+  // }
 
   logout(): void {
-    this.userService.logout();
-    this.router.navigate(['/'])
+    // this.userService.logout();
+    // this.router.navigate(['/'])
+  }
+
+  ngOnDestroy(): void {
+
   }
 }

@@ -9,7 +9,13 @@
         >
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <div *ngIf="isLoading">
+          <app-loader/>
+      </div>
+      <div class="alert alert-danger" *ngIf="error">
+          {{error}}
+      </div>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="!isLoading">
           <!-- Email input -->
           <div class="form-outline mb-4">
             <label

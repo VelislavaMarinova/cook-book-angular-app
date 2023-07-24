@@ -15,16 +15,15 @@ export class RecipeCategoriesComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.onGetCategories()
+  }
 
+  onGetCategories() {
     this.apiService.getCategories().subscribe(
       {
         next: (categories) => {
 
           this.categoriesList = categories;
-
-          // if (this.recipeList.length === 0) {
-          //   this.noRecipesInTheList = true;
-          // }
 
           this.isLoading = false
           console.log('from categories', this.categoriesList)
@@ -36,8 +35,43 @@ export class RecipeCategoriesComponent implements OnInit {
         }
       }
     );
-
   }
+
+// improved
+// categoriesList: any[] = [];
+//   isLoading: boolean = true;
+//   private destroy$: Subject<void> = new Subject<void>();
+
+//   constructor(private apiService: ApiService) {}
+
+//   ngOnInit(): void {
+//     this.fetchCategories();
+//   }
+
+//   private fetchCategories(): void {
+//     this.apiService.getCategories()
+//       .pipe(
+//         takeUntil(this.destroy$),
+//         catchError((err) => {
+//           console.log(`Error fetching categories: ${err}`);
+//           // Handle error gracefully, e.g., show error message to the user
+//           return [];
+//         })
+//       )
+//       .subscribe({
+//         next: (categories) => {
+//           this.categoriesList = categories;
+//           this.isLoading = false;
+//           console.log('Categories', this.categoriesList);
+//         }
+//       });
+//   }
+
+//   ngOnDestroy(): void {
+//     this.destroy$.next();
+//     this.destroy$.complete();
+//   }
+
   // recipeList: Recipe[] = [];
   // isLoading: boolean = true;
   // noRecipesInTheList: boolean = false;

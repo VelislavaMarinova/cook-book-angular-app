@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-import { AuthGuard } from '../core/guards/authGuard';
+// import { AuthGuard } from '../core/guards/authGuard';
 import { RecipesMainComponent } from './recipes-main/recipes-main.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeCategoryItemComponent } from './recipe-category-item/recipe-category-item.component';

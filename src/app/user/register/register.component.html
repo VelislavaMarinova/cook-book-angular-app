@@ -8,8 +8,15 @@
                     alt="Sample image"
                 >
             </div>
+          
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form (ngSubmit)="onSubmit()" #f="ngForm">
+                <div *ngIf="isLoading">
+                    <app-loader/>
+                </div>
+                <div class="alert alert-danger" *ngIf="error">
+                    {{error}}
+                </div>
+                <form (ngSubmit)="onSubmit()" #f="ngForm" *ngIf="!isLoading">
                     <!-- Username input -->
                     <div class="form-outline mb-4">
                         <label
@@ -49,7 +56,7 @@
                         />
                         <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a vailid email!</span>
                     </div>
-                    <div class="form-outline mb-4" ><i class="fas fa-venus-mars"></i> Gender
+                    <!-- <div class="form-outline mb-4" ><i class="fas fa-venus-mars"></i> Gender
                     
                         <div class="radio" *ngFor="let gender of genders">
                             <label class="form-label">
@@ -64,7 +71,7 @@
                              
                             </label>
                           </div>
-                    </div>
+                    </div> -->
 
 
 

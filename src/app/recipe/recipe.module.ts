@@ -13,6 +13,7 @@ import { RecipeCategoriesComponent } from './recipe-categories/recipe-categories
 import { RecipeCategoryItemComponent } from './recipe-category-item/recipe-category-item.component';
 import { RecipeListByCategoryComponent } from './recipe-list-by-category/recipe-list-by-category.component';
 import { ShortenPipe } from '../shared/pipes/shorten.pipe';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -32,6 +33,7 @@ import { ShortenPipe } from '../shared/pipes/shorten.pipe';
     CommonModule,
     SharedModule, 
     RecipeRoutingModule,
+    FormsModule
   ]
 })
 export class RecipeModule { }
