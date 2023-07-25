@@ -27,6 +27,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.userSub = this.userService.user$$.subscribe(user => {
       this.isAuthenticated = !!user;
       this.username=user?.username
+      console.log(user,'header');
+      
       console.log(user?.username, 'user');
       console.log(!!user);
     });
@@ -40,9 +42,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   //   return this.userService.user?.username || '';
   // }
 
-  logout(): void {
-    // this.userService.logout();
-    // this.router.navigate(['/'])
+  onLogout(): void {
+    this.userService.logout();
   }
 
   ngOnDestroy(): void {

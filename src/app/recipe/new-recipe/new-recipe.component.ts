@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ApiService } from 'src/app/api.service';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-new-recipe',
@@ -7,6 +9,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./new-recipe.component.css']
 })
 export class NewRecipeComponent {
+
+  constructor(private apiService: ApiService){}
 
   onSubmit(f:NgForm) {
     if (f.invalid) {
@@ -26,6 +30,8 @@ export class NewRecipeComponent {
       imageUrl,
       method
     } = f.value;
+    this.apiService.addRecipe(f.value)
   }
+
 
 }

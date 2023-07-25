@@ -2,6 +2,7 @@ import {
     HTTP_INTERCEPTORS,
     HttpEvent,
     HttpHandler,
+    HttpHeaders,
     HttpInterceptor,
     HttpParams,
     HttpRequest,
@@ -17,20 +18,50 @@ const { apiUrl } = environment;
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-    constructor(private router: Router, private userService: UserService) { } //private errorServie: ErrorService
+    constructor(private userService: UserService) {}
 
-
-    intercept(
-        req: HttpRequest<any>,
-        next: HttpHandler
-    ) {
-        console.log('Request is on its way');
-        console.log(req.url);
-        
-        const modifiedRequest = req.clone() //{headers: req.headers.append('x-authorization','aaa')}
-        return next.handle(modifiedRequest);
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      // Check if the request method is POST and the URL matches the desired one
+      if (req.method === 'POST' && req.url === `${apiUrl}/recipes`) {
+        const user = this.userService.user$$?.getValue();
+        if (user && user.accessToken) {
+          // Clone the request and add the Authorization header
+          const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'X-Authorization': user.accessToken
+          });
+          const modifiedReq = req.clone({ headers: headers });
+          return next.handle(modifiedReq);
+        }
+      }
+  
+      // For other requests or if the conditions are not met, pass the original request
+      return next.handle(req);
     }
 }
+
+    // intercept(
+    //     req: HttpRequest<any>,
+    //     next: HttpHandler
+    // ) {
+    //     return this.userService.user$$.pipe(take(1), exhaustMap(user => {
+
+        
+    //         const headers = new HttpHeaders({
+    //           'Content-Type': 'application/json',
+    //           'X-Authorization': user!.accessToken
+    //         });
+    //             const modifiedRequest = req.clone({
+
+    //             }) //{headers: req.headers.append('x-authorization','aaa')}
+
+    //         })
+    //     )
+    //     console.log(req.url);
+        
+    //     return next.handle(modifiedRequest);
+    // }
+
     // return this.userService.user$.pipe(
     //     take(1),
     //     exhaustMap((user) => {
