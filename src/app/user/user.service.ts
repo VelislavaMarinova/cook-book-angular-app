@@ -3,6 +3,7 @@ import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 interface UserResponseData {
@@ -18,7 +19,6 @@ interface UserResponseData {
 })
 export class UserService {
   user$$ = new BehaviorSubject<User | undefined>(undefined);
-  token: string | undefined;
   // public user$ = this.user$$.asObservable();
 
   // user: User | undefined;
@@ -29,7 +29,10 @@ export class UserService {
   //   return !!this.user;
   // }
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {
     // try {
     //   const localStorageUser = localStorage.getItem(this.USER_KEY) || "";
     //   this.user = JSON.parse(localStorageUser)
@@ -100,6 +103,38 @@ export class UserService {
       }))
   }
 
+  logout() {
+    this.user$$.next(undefined);
+    this.router.navigate(['/'])
+  }
+
+  aoutoLogin() {
+    const userDataJSON: string | null = localStorage.getItem('userData');
+    if (!userDataJSON) {
+      return;
+    }
+    const userData: {
+      _id: string,
+      username: string,
+      email: string,
+      accessToken: string
+    } = JSON.parse(userDataJSON);
+    if (!userData) {
+      return;
+    }
+    const loadedUser = new User(
+      userData._id,
+      userData.username,
+      userData.email,
+      userData.accessToken,
+    )
+
+    if(loadedUser.accessToken){
+      this.user$$.next(loadedUser)
+    }
+
+  }
+
   private handleAuthenticaton(
     _id: string,
     username: string,
@@ -113,6 +148,8 @@ export class UserService {
       accessToken
     );
     this.user$$.next(user)
+    localStorage.setItem('userData', JSON.stringify(user))
+
 
     // .pipe(tap((resData) => {
     //   this.handleAuth(

@@ -31,11 +31,11 @@ import { AppInterceptor } from './app.interceptor';
     FormsModule
   ],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AppInterceptor,
-    //   multi: true
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
