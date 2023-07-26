@@ -1,0 +1,199 @@
+<section class="add-recipe">
+    <h1>Add Recipe</h1>
+    <div class="container-fluid h-custom">
+        <form
+            class="add-recipe-form"
+            (ngSubmit)="onSubmit(f)"
+            #f="ngForm"
+        >
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input
+                            name="title"
+                            type="text"
+                            class="form-control form-control-sm"
+                            id="title"
+                            placeholder="Fried rice with egg & ginger"
+                            ngModel
+                            required
+                            #title="ngModel"
+                        >
+                        <small
+                            id="inputHelp"
+                            class="form-text text-muted"
+                        >Error</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select
+                            class="form-control form-control-sm"
+                            id="category"
+                            name="category"
+                            ngModel
+                            required
+                            #category="ngModel"
+                        >
+                            <option>drinks</option>
+                            <option>main-dishes</option>
+                            <option>healthy-recipes</option>
+                            <option>quick-recipes</option>
+                            <option>desserts</option>
+                            <option>salads</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dificulty">Dificulty level</label>
+                        <select
+                            class="form-control form-control-sm"
+                            id="dificulty"
+                            name="dificulty"
+                            ngModel
+                            required
+                            #dificulty="ngModel"
+                        >
+                            <option>easy</option>
+                            <option>medium</option>
+                            <option>hard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prepare">Time to prepare</label>
+                        <input
+                            type="text"
+                            id="prepare"
+                            class="form-control form-control-sm"
+                            placeholder="10 mins"
+                            name="prepare"
+                            ngModel
+                            required
+                            #prepare="ngModel"
+                        >
+                        <small
+                            id="inputHelp"
+                            class="form-text text-muted"
+                        >Error</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="cook">Cooking time</label>
+                        <input
+                            type="text"
+                            id="cook"
+                            class="form-control form-control-sm"
+                            placeholder="15 mins"
+                            name="cook"
+                            ngModel
+                            required
+                            #cook="ngModel"
+                        >
+                        <small
+                            id="inputHelp"
+                            class="form-text text-muted"
+                        >Error</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="serves">Servers</label>
+                        <input
+                            type="text"
+                            id="serves"
+                            class="form-control form-control-sm"
+                            placeholder="Serves 4"
+                            name="serves"
+                            ngModel
+                            required
+                            #serves="ngModel"
+                        >
+                        <small
+                            id="inputHelp"
+                            class="form-text text-muted"
+                        >Error</small>
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea
+                            class="form-control"
+                            id="description"
+                            placeholder="Add some description here..."
+                            name="description"
+                            rows="2"
+                            ngModel
+                            required
+                            #description="ngModel"
+                        ></textarea>
+                        <small
+                            id="inputHelp"
+                            class="form-text text-muted"
+                        >Error</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Ingredients</label>
+                        <textarea
+                            class="form-control"
+                            id="ingredients"
+                            placeholder="Add some description here..."
+                            name="ingredients"
+                            rows="2"
+                            ngModel
+                            required
+                            #ingredients="ngModel"
+                        ></textarea>
+                        <small
+                            id="inputHelp"
+                            class="form-text text-muted"
+                        >Error</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="imageUrl">Image URL</label>
+                        <input
+                            type="text"
+                            id="imageUrl"
+                            class="form-control form-control-sm"
+                            placeholder="image URL"
+                            name="imageUrl"
+                            ngModel
+                            required
+                            #imageUrl="ngModel"
+                        >
+                        <small
+                            id="inputHelp"
+                            class="form-text text-muted"
+                        >Error</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="method">Method to prepare</label>
+                        <textarea
+                            class="form-control"
+                            id="method"
+                            placeholder="Add some description here..."
+                            rows="2"
+                            name="method"
+                            ngModel
+                            required
+                            #method="ngModel"
+                        ></textarea>
+                        <small
+                            id="inputHelp"
+                            class="form-text text-muted"
+                        >Error</small>
+                    </div>
+                </div>
+            </div>
+            <button
+                type="submit"
+                class=" btn btn-primary mb-2"
+            >Add recipe</button>
+        </form>
+    </div>
+</section>

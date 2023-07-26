@@ -1,0 +1,23 @@
+<section class="recipe-list">
+    <div *ngIf="isLoading">
+        <app-loader />
+    </div>
+    <div
+        *ngIf="!isLoading"
+        class="scroll-container"
+    >
+        <div class="row">
+            <div class="col-xs-12 border">
+                <app-recipe-category-item
+                    *ngFor="let category of categoriesList; "
+                    [category]="category"
+                ></app-recipe-category-item>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div *ngIf="noRecipesInTheList">
+        There are no recipes. You can <a href="">add recipe</a>.
+    </div> -->
+
+</section>

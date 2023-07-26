@@ -8,7 +8,6 @@ import { RecipesMainComponent } from './recipes-main/recipes-main.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeCategoryItemComponent } from './recipe-category-item/recipe-category-item.component';
 import { RecipeListByCategoryComponent } from './recipe-list-by-category/recipe-list-by-category.component';
-import { AuthGuard } from '../core/guards/authGuard';
 
 
 const routes: Routes = [
@@ -33,7 +32,7 @@ const routes: Routes = [
   {
     path: 'add-recipe',
     component: NewRecipeComponent,
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
 
   },
   // {

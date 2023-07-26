@@ -1,0 +1,16 @@
+.card {
+  width: 30vw;
+  height: 8vh;
+  margin: 10px;
+}
+.card:hover {
+  border: 1px solid black;
+}
+
+.card img {
+  height: 7vh;
+  object-fit: cover;
+}
+/* .card.col-sm-5{
+    height: 18vh;
+} */

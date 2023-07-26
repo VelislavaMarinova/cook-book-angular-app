@@ -20,10 +20,6 @@ export class ApiService {
     const { apiUrl } = environment
     return this.http.get<Recipe[]>(`${apiUrl}/recipes`);
   }
-  getRecipesByCategory(category: string) {
-    const { apiUrl } = environment
-    return this.http.get<Recipe[]>(`${apiUrl}/recipes?where=category%3D%22${category}%22`);
-  }
 
   getRecipe(id: string) {
     const { apiUrl } = environment;
