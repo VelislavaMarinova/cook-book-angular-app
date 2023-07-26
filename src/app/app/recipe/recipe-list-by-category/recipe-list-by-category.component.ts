@@ -13,7 +13,7 @@ export class RecipeListByCategoryComponent implements OnInit {
   recipes: Recipe[] | undefined
   isLoading: boolean = true;
 
-  category: string | undefined;
+  category: string = '';
 
 
   constructor(
@@ -34,20 +34,20 @@ export class RecipeListByCategoryComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       //from params id comes as a string, so it is need to be cast to number
       this.category = params['category'];
-    
-              this.apiService.getRecipesByCategory(this.category!).subscribe(
-                {
-                  next: (recipes) => {
-                    this.recipes = recipes
-                    this.isLoading = false
-                    // this.recipes.filter(r=>r.category === this.category)
-                  },
-                  error: (err) => {
-                    this.isLoading = false
-                    console.log(`Error ${err}`);
-                  }
-                })
-      
+
+      this.apiService.getRecipes().subscribe(
+        {
+          next: (recipes) => {
+            this.recipes = recipes.filter(r=>r.category === this.category);
+            this.isLoading = false
+            // this.recipes.filter(r=>r.category === this.category)
+          },
+          error: (err) => {
+            this.isLoading = false
+            console.log(`Error ${err}`);
+
+          }
+        })
 
       // this.recipe = this.recipeService.getOneRecipe(this.id)
     })
