@@ -10,7 +10,7 @@ export class RecipeCategoryItemComponent implements OnInit {
   @Input() category: Category | undefined
 
   ngOnInit(): void {
-    console.log(this.category);
+    console.log('RecipeCategoryItemComponent',this.category);
     
   }
 

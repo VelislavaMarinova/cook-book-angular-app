@@ -1,11 +1,11 @@
 <section class="add-recipe">
     <h1>Add Recipe</h1>
-    <div class="container-fluid h-custom">
-        <form
-            class="add-recipe-form"
-            (ngSubmit)="onSubmit(f)"
-            #f="ngForm"
-        >
+    <form
+        class="add-recipe-form"
+        [formGroup]="recipeForm"
+        (ngSubmit)="onSubmit()"
+    >
+        <div class="container h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
 
@@ -13,29 +13,23 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input
-                            name="title"
                             type="text"
                             class="form-control form-control-sm"
                             id="title"
                             placeholder="Fried rice with egg & ginger"
-                            ngModel
-                            required
-                            #title="ngModel"
+                            formControlName="title"
                         >
                         <small
-                            id="inputHelp"
-                            class="form-text text-muted"
-                        >Error</small>
+                            class="input-help form-text "
+                            *ngIf="!recipeForm.get('title')?.valid && recipeForm.get('title')?.touched"
+                        >Title is required!</small>
                     </div>
                     <div class="form-group">
                         <label for="category">Category</label>
                         <select
                             class="form-control form-control-sm"
                             id="category"
-                            name="category"
-                            ngModel
-                            required
-                            #category="ngModel"
+                            formControlName="category"
                         >
                             <option>drinks</option>
                             <option>main-dishes</option>
@@ -50,10 +44,7 @@
                         <select
                             class="form-control form-control-sm"
                             id="dificulty"
-                            name="dificulty"
-                            ngModel
-                            required
-                            #dificulty="ngModel"
+                            formControlName="dificulty"
                         >
                             <option>easy</option>
                             <option>medium</option>
@@ -61,21 +52,18 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="prepare">Time to prepare</label>
+                        <label for="prepare">Prepare time</label>
                         <input
                             type="text"
                             id="prepare"
                             class="form-control form-control-sm"
                             placeholder="10 mins"
-                            name="prepare"
-                            ngModel
-                            required
-                            #prepare="ngModel"
+                            formControlName="prepare"
                         >
                         <small
-                            id="inputHelp"
-                            class="form-text text-muted"
-                        >Error</small>
+                            class="input-help form-text "
+                            *ngIf="!recipeForm.get('prepare')?.valid && recipeForm.get('prepare')?.touched"
+                        >Prepare time is required!</small>
                     </div>
                     <div class="form-group">
                         <label for="cook">Cooking time</label>
@@ -84,15 +72,12 @@
                             id="cook"
                             class="form-control form-control-sm"
                             placeholder="15 mins"
-                            name="cook"
-                            ngModel
-                            required
-                            #cook="ngModel"
+                            formControlName="cook"
                         >
                         <small
-                            id="inputHelp"
-                            class="form-text text-muted"
-                        >Error</small>
+                            class="input-help form-text "
+                            *ngIf="!recipeForm.get('cook')?.valid && recipeForm.get('cook')?.touched"
+                        >Cooking time is required!</small>
                     </div>
                     <div class="form-group">
                         <label for="serves">Servers</label>
@@ -101,58 +86,25 @@
                             id="serves"
                             class="form-control form-control-sm"
                             placeholder="Serves 4"
-                            name="serves"
-                            ngModel
-                            required
-                            #serves="ngModel"
+                            formControlName="serves"
                         >
                         <small
-                            id="inputHelp"
-                            class="form-text text-muted"
-                        >Error</small>
+                            class="input-help form-text "
+                            *ngIf="!recipeForm.get('serves')?.valid && recipeForm.get('serves')?.touched"
+                        >Serves is required!</small>
                     </div>
-
-
-                </div>
-
-
-                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-
-
-
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea
                             class="form-control"
                             id="description"
                             placeholder="Add some description here..."
-                            name="description"
-                            rows="2"
-                            ngModel
-                            required
-                            #description="ngModel"
+                            formControlName="description"
                         ></textarea>
                         <small
-                            id="inputHelp"
-                            class="form-text text-muted"
-                        >Error</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Ingredients</label>
-                        <textarea
-                            class="form-control"
-                            id="ingredients"
-                            placeholder="Add some description here..."
-                            name="ingredients"
-                            rows="2"
-                            ngModel
-                            required
-                            #ingredients="ngModel"
-                        ></textarea>
-                        <small
-                            id="inputHelp"
-                            class="form-text text-muted"
-                        >Error</small>
+                            class="input-help form-text "
+                            *ngIf="!recipeForm.get('description')?.valid && recipeForm.get('description')?.touched"
+                        >Description is required!</small>
                     </div>
                     <div class="form-group">
                         <label for="imageUrl">Image URL</label>
@@ -161,39 +113,137 @@
                             id="imageUrl"
                             class="form-control form-control-sm"
                             placeholder="image URL"
-                            name="imageUrl"
-                            ngModel
-                            required
-                            #imageUrl="ngModel"
+                            formControlName="imageUrl"
                         >
                         <small
-                            id="inputHelp"
-                            class="form-text text-muted"
-                        >Error</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="method">Method to prepare</label>
-                        <textarea
-                            class="form-control"
-                            id="method"
-                            placeholder="Add some description here..."
-                            rows="2"
-                            name="method"
-                            ngModel
-                            required
-                            #method="ngModel"
-                        ></textarea>
-                        <small
-                            id="inputHelp"
-                            class="form-text text-muted"
-                        >Error</small>
+                            class="input-help form-text "
+                            *ngIf="!recipeForm.get('imageUrl')?.valid && recipeForm.get('imageUrl')?.touched"
+                        >Image Url is required!</small>
                     </div>
                 </div>
+
+
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
+                    <div class="form-group">
+                        <label for="description">Ingredients</label>
+                        <div
+                            class="row"
+                            style="margin-top: 10px"
+                        >
+                            <div class="col-md-12">
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    (click)="onAddIngredient()"
+                                >Add Ingredient</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div
+                                class="col-md-12"
+                                formArrayName='ingredients'
+                            >
+                                <div
+                                    class="row"
+                                    style="margin-top:10px"
+                                    *ngFor="let child of ingredientsFormArray.controls; let i=index"
+                                    [formGroupName]="i"
+                                >
+                                    <div class="col-md-10">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            formControlName="ingredient"
+                                        >
+                                        <small
+                                            class="input-help form-text "
+                                            *ngIf="!ingredientsFormArray.controls[i].get('ingredient')?.valid && ingredientsFormArray.controls[i].get('ingredient')?.touched"
+                                        >Ingredient is required!</small>
+
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <button
+                                            class="btn btn-primary"
+                                            (click)="onRemoveIngredient(i)"
+                                        >X
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Method by steps</label>
+                        <div
+                            class="row"
+                            style="margin-top: 10px"
+                        >
+                            <div class="col-md-12">
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    (click)="onAddAStep()"
+                                >Add Step</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div
+                                class="col-md-12"
+                                formArrayName='method'
+                            >
+                                <div
+                                    class="row"
+                                    style="margin-top:10px"
+                                    *ngFor="let child of methodFormArray.controls; let i=index"
+                                    [formGroupName]="i"
+                                >
+                                    <div class="col-md-10">
+                                        <!-- <input
+                                            type="text"
+                                            class="form-control"
+                                            formControlName="step"
+                                        > -->
+                                        <textarea
+                                            class="form-control"
+                                            formControlName="step"
+                                            rows="3"
+                                        ></textarea>
+
+                                        <small
+                                            class="input-help form-text "
+                                            *ngIf="!methodFormArray.controls[i].get('step')?.valid && methodFormArray.controls[i].get('step')?.touched"
+    
+                                        >Method is required!</small>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <button
+                                            class="btn btn-primary"
+                                            (click)="onRemoveStep(i)"
+                                        >X
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <button
-                type="submit"
-                class=" btn btn-primary mb-2"
-            >Add recipe</button>
-        </form>
-    </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-5">
+
+                    <button
+                        type="submit"
+                        class=" btn btn-primary mb-2"
+                        [disabled]="!recipeForm.valid"
+                    >Add recipe</button>
+                </div>
+            </div>
+        </div>
+    </form>
 </section>

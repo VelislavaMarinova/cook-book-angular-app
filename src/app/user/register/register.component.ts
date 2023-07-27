@@ -32,19 +32,31 @@ export class RegisterComponent {
     this.isLoading = true;
     console.log(this.registerForm?.value);
     this.userService.register(username, email, password).subscribe(
-      resData => {
-        console.log(resData);
-        this.isLoading = false;
-        this.router.navigate(['/recipes'])
+      {
+        next: (resData) => {
+          console.log(resData);
+          this.isLoading = false;
+          this.router.navigate(['/recipes']);
+          this.registerForm?.reset();
 
-      },
-      errorMessage => {
-
-        console.log(errorMessage);
-        this.error = errorMessage
-        this.isLoading = false;
+        }, error: errorMessage => {
+          this.error = errorMessage
+          this.isLoading = false;
+        }
       })
-    this.registerForm?.reset()
+    // resData => {
+    //   console.log(resData);
+    //   this.isLoading = false;
+    //   this.router.navigate(['/recipes'])
+
+    // },
+    // errorMessage => {
+
+    //   console.log(errorMessage);
+    //   this.error = errorMessage
+    //   this.isLoading = false;
+    // })
+    
     // console.log('submited');
 
   }

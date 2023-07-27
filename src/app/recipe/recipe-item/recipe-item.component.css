@@ -1,16 +1,13 @@
-.card{
-    width: 30vw;
-    height: 20vh;
-    margin: 10px;
-}
-.card:hover{
-    border: 1px solid black
+.recipe-item {
+    
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 45vh;
 }
 
-.card img{
-    height: 18vh;
-    overflow: hidden;
-}
-.card.col-sm-5{
-    height: 18vh;
+.card-body {
+  height: 3vh;
 }

@@ -20,26 +20,6 @@ export class LoginComponent {
     private router: Router
   ) { }
 
-  // @ViewChild('f') loginForm: NgForm | undefined 
-
-
-  // constructor(private user: User){}
-  user = {
-    password: '',
-    email: '',
-
-  }
-  // user: User |  undefined
-
-  // onSubmit() {
-  //   this.user.password = this.loginForm?.value.password;
-  //   this.user.email = this.loginForm?.value.email;
-
-  //   console.log(this.user);
-  //   // console.log('submited');
-
-
-  // }
   onSubmit(f: NgForm): void {
     if (f.invalid) {
       return;
@@ -48,18 +28,21 @@ export class LoginComponent {
     console.log(email, password);
 
     this.userService.login(email, password).subscribe(
-      resData => {
-        console.log(resData);
-        this.isLoading = false;
-        this.router.navigate(['/recipes'])
-      },
-      errorMessage => {
+      {
+        next: (resData) => {
 
-        console.log(errorMessage);
-        this.error = errorMessage
-        this.isLoading = false;
+          console.log(resData);
+          this.isLoading = false;
+          this.router.navigate(['/recipes']);
+          
+        }, error: errorMessage => {
+          console.log(errorMessage);
+          this.error = errorMessage
+          this.isLoading = false;
+        }
       });
-    // f.value?.reset()
+      //todo reset
+      f.value?.reset()
 
   }
 }
