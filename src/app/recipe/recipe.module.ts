@@ -2,18 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { RecipeRoutingModule } from './recipe-routing.module';
-import { UserModule } from '../user/user.module';
 import { RecipesMainComponent } from './recipes-main/recipes-main.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 import { RecipeCategoriesComponent } from './recipe-categories/recipe-categories.component';
 import { RecipeCategoryItemComponent } from './recipe-category-item/recipe-category-item.component';
 import { RecipeListByCategoryComponent } from './recipe-list-by-category/recipe-list-by-category.component';
-import { ShortenPipe } from '../shared/pipes/shorten.pipe';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +18,6 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     NewRecipeComponent,
     RecipeDetailsComponent,
-    RecipesListComponent,
     RecipesMainComponent,
     RecipeStartComponent,
     RecipeItemComponent,
@@ -31,9 +27,9 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    SharedModule, 
+    SharedModule,
     RecipeRoutingModule,
-    FormsModule
+    ReactiveFormsModule
   ]
 })
 export class RecipeModule { }

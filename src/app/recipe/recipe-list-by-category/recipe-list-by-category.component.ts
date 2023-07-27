@@ -12,7 +12,7 @@ import { UserService } from 'src/app/user/user.service';
 export class RecipeListByCategoryComponent implements OnInit {
   recipes: Recipe[] | undefined
   isLoading: boolean = true;
-
+  noRecipesInTheList: boolean = false;
   category: string | undefined;
 
 
@@ -29,25 +29,29 @@ export class RecipeListByCategoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.fetchRecipe();
-
     this.activatedRoute.params.subscribe((params: Params) => {
       //from params id comes as a string, so it is need to be cast to number
       this.category = params['category'];
-    
-              this.apiService.getRecipesByCategory(this.category!).subscribe(
-                {
-                  next: (recipes) => {
-                    this.recipes = recipes
-                    this.isLoading = false
-                    // this.recipes.filter(r=>r.category === this.category)
-                  },
-                  error: (err) => {
-                    this.isLoading = false
-                    console.log(`Error ${err}`);
-                  }
-                })
-      
+
+      this.apiService.getRecipesByCategory(this.category!).subscribe(
+        {
+          next: (recipes) => {
+            this.recipes = recipes;
+            this.isLoading = false;
+            
+            
+            if (this.recipes.length) {
+              this.noRecipesInTheList = true;
+            }
+            // this.recipes.filter(r=>r.category === this.category)
+          },
+          error: (err) => {
+            this.isLoading = false
+            console.log(`Error ${err}`);
+          }
+        })
+console.log(this.noRecipesInTheList);
+
 
       // this.recipe = this.recipeService.getOneRecipe(this.id)
     })

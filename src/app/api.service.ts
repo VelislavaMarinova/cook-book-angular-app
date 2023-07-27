@@ -20,6 +20,12 @@ export class ApiService {
     const { apiUrl } = environment
     return this.http.get<Recipe[]>(`${apiUrl}/recipes`);
   }
+
+  getRecipesByLimit() {
+    const { apiUrl } = environment
+    return this.http.get<Recipe[]>(`${apiUrl}/recipes?limit=3`)
+  }
+
   getRecipesByCategory(category: string) {
     const { apiUrl } = environment
     return this.http.get<Recipe[]>(`${apiUrl}/recipes?where=category%3D%22${category}%22`);
@@ -38,19 +44,9 @@ export class ApiService {
 
   addRecipe(recipe: Recipe) {
 
-    // this.userService.user$$.pipe(take(1), exhaustMap(user => {
-
     const { apiUrl } = environment;
-    //   const headers = new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //     'X-Authorization': user!.accessToken
-    //   });
-    //   console.log(headers,'headers');
-
 
     return this.http.post<Recipe>(`${apiUrl}/recipes`, recipe,)
-      .subscribe(response => {
-        console.log(response);
-      });
+     
   }
 }

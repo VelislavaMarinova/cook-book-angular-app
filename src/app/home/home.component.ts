@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.onFetchRecipes()
   }
   onFetchRecipes() {
-    this.apiService.getRecipes().subscribe(
+    this.apiService.getRecipesByLimit().subscribe(
       {
         next: (recipes) => {
 
@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
           }
 
           this.isLoading = false
-          console.log(recipes)
         },
         error: (err) => {
           this.isLoading = false

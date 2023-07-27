@@ -1,16 +1,28 @@
 
-.add-recipe {
-  margin: 40px;
+input.ng-invalid.ng-touched{
+  border: 1px solid red
+}
+textarea.ng-invalid.ng-touched{
+  border: 1px solid red
+}
+.add-recipe-form .input-help{
+  color: red
+}
+/* .container-fluid{
+ display: grid;
+} */
+/* .add-recipe {
+   margin: 40px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
-}
+  justify-content: center; 
+  align-items: center; 
+} */
 
-.add-recipe-form {
+/* .add-recipe-form {
   margin-top: 50px;
   text-align: center;
 }
 .add-recipe-form button{
     margin-top: 50px;
-}
+} */
