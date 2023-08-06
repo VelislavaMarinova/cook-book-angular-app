@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     RecipeRoutingModule,
     ReactiveFormsModule
-  ]
+  ],
+  exports:[RecipeItemComponent]
 })
 export class RecipeModule { }

@@ -17,7 +17,7 @@ export class RecipeListByCategoryComponent implements OnInit {
 
 
   constructor(
-    private userService: UserService,
+    
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
   ) { }
@@ -28,7 +28,10 @@ export class RecipeListByCategoryComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-
+    this.isLoading = true;
+    this.noRecipesInTheList=false;
+   
+    
     this.activatedRoute.params.subscribe((params: Params) => {
       //from params id comes as a string, so it is need to be cast to number
       this.category = params['category'];
@@ -40,7 +43,7 @@ export class RecipeListByCategoryComponent implements OnInit {
             this.isLoading = false;
             
             
-            if (this.recipes.length) {
+            if (!this.recipes.length) {
               this.noRecipesInTheList = true;
             }
             // this.recipes.filter(r=>r.category === this.category)
@@ -50,7 +53,6 @@ export class RecipeListByCategoryComponent implements OnInit {
             console.log(`Error ${err}`);
           }
         })
-console.log(this.noRecipesInTheList);
 
 
       // this.recipe = this.recipeService.getOneRecipe(this.id)

@@ -1,0 +1,29 @@
+.home {
+  min-height: 80vh;
+  padding-block: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .home-cards {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .home-cards {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  
+    .home {
+      padding-block: 1rem;
+    }
+  }

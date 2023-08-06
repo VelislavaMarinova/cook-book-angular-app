@@ -1,21 +1,31 @@
-<h1>{{category}}</h1>
-<section class="recipe-list">
+<div class="recipe-list">
+    <div class="recipe-list-header">
+        <h1>{{category}}</h1>
+    </div>
+
     <div *ngIf="isLoading">
-      <app-loader />
+        <app-loader />
     </div>
-    <div *ngIf="!isLoading" class ="scroll-container">
-      <div class="row">
-        <div class="col-xs-12 border recipe-items">
-          <app-recipe-item
-            *ngFor="let selectedRecipe of recipes; "
-            [recipe]="selectedRecipe"
-          ></app-recipe-item>
+
+    <div
+        *ngIf="!isLoading"
+        class="row"
+    >
+        <div *ngIf="noRecipesInTheList">
+            There are no recipes in {{category}}. You can <a routerLink="/add-recipe">add recipe</a>.
         </div>
-      </div>
+        <div class="col-xs-12 border recipe-items" >
+            <app-recipe-item
+                *ngFor="let selectedRecipe of recipes; "
+                [recipe]="selectedRecipe"
+            ></app-recipe-item>
+        </div>
+        <div class=" details-button" >
+         <button class="btn btn-primary">Load More</button>
+        </div>
     </div>
-  
-    <div *ngIf="!noRecipesInTheList">
-      There are no recipes. You can <a href="">add recipe</a>.
-    </div>
-  
-  </section>
+
+
+
+
+</div>

@@ -5,10 +5,7 @@ body {
   background-color: antiquewhite;
   height: 100%;
 }
-section {
-  height: 85%;
-  padding: 10px 20px;
-}
+
 
 .btn-primary {
   background-color: rgba(76, 55, 55, 0.5);
@@ -35,6 +32,9 @@ a {
   border: 1px solid blue;
   min-height: 50px;
   font-size: 2rem;
+}
+.container{
+  
 }
 
 @media (min-width: 576px) {

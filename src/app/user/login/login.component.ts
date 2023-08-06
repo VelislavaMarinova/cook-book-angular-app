@@ -1,8 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { User } from 'src/app/types/user';
 
 @Component({
   selector: 'app-login',
@@ -20,12 +19,14 @@ export class LoginComponent {
     private router: Router
   ) { }
 
-  onSubmit(f: NgForm): void {
-    if (f.invalid) {
+  onSubmit(loginForm: NgForm): void {
+
+    if (loginForm.invalid) {
       return;
     }
-    const { email, password } = f.value;
-    console.log(email, password);
+
+    const { email, password } = loginForm.value;
+    // console.log(email, password);
 
     this.userService.login(email, password).subscribe(
       {
@@ -34,6 +35,7 @@ export class LoginComponent {
           console.log(resData);
           this.isLoading = false;
           this.router.navigate(['/recipes']);
+          loginForm.reset()
           
         }, error: errorMessage => {
           console.log(errorMessage);
@@ -42,7 +44,7 @@ export class LoginComponent {
         }
       });
       //todo reset
-      f.value?.reset()
+      
 
   }
 }

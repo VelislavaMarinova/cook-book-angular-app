@@ -23,7 +23,7 @@ export class ApiService {
 
   getRecipesByLimit() {
     const { apiUrl } = environment
-    return this.http.get<Recipe[]>(`${apiUrl}/recipes?limit=3`)
+    return this.http.get<Recipe[]>(`${apiUrl}/recipes?limit=4`)
   }
 
   getRecipesByCategory(category: string) {

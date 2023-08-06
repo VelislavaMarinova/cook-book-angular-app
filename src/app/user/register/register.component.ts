@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
 // import { User } from 'src/app/types/user';
 import { UserService } from '../user.service';
@@ -10,12 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  @ViewChild('f') registerForm: NgForm | undefined
 
   isLoading = false;
   error: string | undefined;
-
-  // genders = ['male', 'female'];
 
   constructor(
     private userService: UserService,
@@ -23,41 +20,33 @@ export class RegisterComponent {
   ) { }
 
 
-  onSubmit() {
-    if (this.registerForm?.invalid) {
+  onSubmit(registerForm:NgForm) {
+    if (registerForm.invalid) {
       return;
     }
 
-    const { username, email, password, rePass } = this.registerForm?.value
+    const { username, email, password, rePass } = registerForm.value;
+
+    if (password !== rePass) {
+      this.error = 'Passwords don`t match';
+      return;
+    }
+
     this.isLoading = true;
-    console.log(this.registerForm?.value);
+    console.log(registerForm.value);
     this.userService.register(username, email, password).subscribe(
       {
         next: (resData) => {
           console.log(resData);
           this.isLoading = false;
           this.router.navigate(['/recipes']);
-          this.registerForm?.reset();
+          registerForm.resetForm();
 
         }, error: errorMessage => {
-          this.error = errorMessage
+          this.error = errorMessage;
           this.isLoading = false;
         }
       })
-    // resData => {
-    //   console.log(resData);
-    //   this.isLoading = false;
-    //   this.router.navigate(['/recipes'])
-
-    // },
-    // errorMessage => {
-
-    //   console.log(errorMessage);
-    //   this.error = errorMessage
-    //   this.isLoading = false;
-    // })
-    
-    // console.log('submited');
-
   }
+ 
 }

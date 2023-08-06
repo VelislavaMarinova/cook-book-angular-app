@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
-import { Recipe } from 'src/app/types/recipe';
-import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-new-recipe',
@@ -40,10 +38,11 @@ export class NewRecipeComponent implements OnInit {
 
   get ingredientsFormArray(): FormArray {
     return this.recipeForm.get('ingredients') as FormArray;
-  }
+  };
+
   get methodFormArray(): FormArray {
     return this.recipeForm.get('method') as FormArray;
-  }
+  };
 
   ngOnInit(): void {
     this.createForm()
