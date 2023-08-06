@@ -20,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     UserRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class UserModule { }

@@ -1,13 +1,21 @@
-<section >
-    <div *ngIf="isLoading">
-        <app-loader />
-    </div>
-    <div *ngIf="!isLoading">
-        <p *ngFor="let recipe of recipeList">{{recipe.title}}</p>
-    </div>
-    
-    <div *ngIf="noRecipesInTheList">
-        There are no recipes. You can <a href="">add recipe</a>.
-    </div>
+<div class="container">
 
-</section>
+    <section class="home" >
+        <div *ngIf="isLoading">
+            <app-loader />
+        </div>
+        <div *ngIf="!isLoading" >
+            <div *ngIf="!noRecipesInTheList" class="home-cards">
+                <app-recipe-item
+                 *ngFor="let recipe of recipeList"
+                 [recipe]="recipe">
+                </app-recipe-item>
+            </div>
+        </div>
+        
+        <div *ngIf="noRecipesInTheList">
+            There are no recipes. You can <a routerLink="/add-recipe">add recipe</a>.
+        </div>
+    
+    </section>
+</div>

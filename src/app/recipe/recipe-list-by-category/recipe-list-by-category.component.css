@@ -1,6 +1,4 @@
 .recipe-items{
-    display: flex;
-    flex-direction: row;
-    
-    gap: 20px;
+   display: grid;
+   grid-template-columns: repeat(3,1fr);
 }
