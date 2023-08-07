@@ -1,31 +1,30 @@
+
 <div class="recipe-list">
     <div class="recipe-list-header">
-        <h1>{{category}}</h1>
+        <h1 class="col-xs-12 text-center">{{category | uppercase}}</h1>
     </div>
-
-    <div *ngIf="isLoading">
+    <div *ngIf="isLoading" >
         <app-loader />
     </div>
-
     <div
         *ngIf="!isLoading"
-        class="row"
+        class=""
     >
         <div *ngIf="noRecipesInTheList">
             There are no recipes in {{category}}. You can <a routerLink="/add-recipe">add recipe</a>.
         </div>
-        <div class="col-xs-12 border recipe-items" >
-            <app-recipe-item
-                *ngFor="let selectedRecipe of recipes; "
-                [recipe]="selectedRecipe"
-            ></app-recipe-item>
-        </div>
-        <div class=" details-button" >
-         <button class="btn btn-primary">Load More</button>
+        <div class="row row-gap-4" *ngIf="!noRecipesInTheList">
+            <div class="col-xs-12 text-center">{{numLoadedRecipes}} loaded recipes from total: {{recipesToLoad.length}}</div>
+            <div class="row row-gap-4 items">
+                <app-recipe-item
+                    *ngFor="let recipe of recipesToLoad; "
+                    [recipe]="recipe"
+                    ngClass="col-xs-6 col-md-6 col-lg-4"
+                ></app-recipe-item>
+            </div>
+            <div class="col-12 text-center load-more" *ngIf="!noRecipesInTheList">
+                <button [ngClass]="{ 'disabled-button': !loadMore }" class="btn btn-primary" (click)="onLoadMore()" >Load More</button>
+            </div>
         </div>
     </div>
-
-
-
-
 </div>

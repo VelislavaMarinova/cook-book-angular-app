@@ -1,13 +1,10 @@
-.recipe-item {
-    
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 45vh;
+.card-info{
+ height: 15vh;
 }
 
-.card-body {
-  height: 3vh;
+.card-info .card-title{
+  font-size: 1rem;
+}
+.card-info .card-text{
+  font-size: 0.8rem;
 }

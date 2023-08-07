@@ -1,4 +1,9 @@
-.recipe-items{
-   display: grid;
-   grid-template-columns: repeat(3,1fr);
+.recipe-list{
+    margin-block: 20px
 }
+button.disabled-button {
+    pointer-events: none;
+   background-color: gray;
+   opacity: 0.6;
+   color: rgb(195, 193, 193);
+  }
