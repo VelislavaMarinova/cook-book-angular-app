@@ -6,13 +6,12 @@
         *ngIf="!isLoading"
         class="recipe-categories-cards"
     >
-        <div class="row">
-            <div class="col-xs-12 border">
+        <div class="row gy-2">
                 <app-recipe-category-item
                     *ngFor="let category of categoriesList"
                     [category]="category"
+                    ngClass="col-xs-12 border"
                 ></app-recipe-category-item>
-            </div>
         </div>
     </div>
 

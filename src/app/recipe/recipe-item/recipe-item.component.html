@@ -1,19 +1,19 @@
-
-<div class="card recipe-item">
-    <div class="card">
-        <img
-            [src]="recipe?.imageUrl"
-            class="card-img-top"
-            alt="{{ recipe?.title }}"
-        >
-        <div class="card-body text-center">
-            <div class="card-info ">
-                <h5 class="card-title">{{ recipe?.title }}</h5>
-                <p class="card-text">{{recipe?.description | shorten : 70}}</p>
+    <div class="card recipe-item">
+        <div class="card">
+            <img
+                [src]="recipe?.imageUrl"
+                class="card-img-top"
+                alt="{{ recipe?.title }}"
+            >
+            <div class="card-body text-center">
+                <div class="card-info ">
+                    <h5 class="card-title">{{ recipe?.title }}</h5>
+                    <p class="card-text">{{recipe?.description | shorten : 70}}</p>
+                </div>
+                <a
+                    [routerLink]="[recipe?._id]"
+                    class="btn btn-primary"
+                >Details</a>
             </div>
-            <a
-                [routerLink]="[recipe?._id]"
-                class="btn btn-primary"
-            >Details</a>
         </div>
     </div>

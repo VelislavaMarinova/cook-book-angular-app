@@ -15,15 +15,15 @@
         </div>
         <div class="row row-gap-4" *ngIf="!noRecipesInTheList">
             <div class="col-xs-12 text-center">{{numLoadedRecipes}} loaded recipes from total: {{recipesToLoad.length}}</div>
-            <div class="row row-gap-4 items">
+            <div class="row row-gap-3 gx-3 items">
                 <app-recipe-item
                     *ngFor="let recipe of recipesToLoad; "
                     [recipe]="recipe"
-                    ngClass="col-xs-6 col-md-6 col-lg-4"
+                    ngClass="col-sm-6 col-md-6 col-lg-4 "
                 ></app-recipe-item>
             </div>
             <div class="col-12 text-center load-more" *ngIf="!noRecipesInTheList">
-                <button [ngClass]="{ 'disabled-button': !loadMore }" class="btn btn-primary" (click)="onLoadMore()" >Load More</button>
+                <button [disabled]="!loadMore" class="btn btn-primary" (click)="onLoadMore()" >Load More</button>
             </div>
         </div>
     </div>
