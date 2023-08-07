@@ -1,54 +1,19 @@
-<div
-    class="card recipe-item"
-    style="width: 18rem;"
->
-    <div class="card recipe-image">
+
+<div class="card recipe-item">
+    <div class="card">
         <img
-            class="card-img"
             [src]="recipe?.imageUrl"
+            class="card-img-top"
             alt="{{ recipe?.title }}"
         >
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">{{recipe?.title}}</h5>
-        <p class="card-text">{{recipe?.description | shorten : 50}}</p>
-    </div>
-    <div class=" details-button" *ngIf="isAuthenticated">
-        <a
-            [routerLink]="[recipe?._id]"
-            class="btn btn-primary"
-        >Details</a>
-    </div>
-</div>
-
-
-
-
-<!-- <a
-    style="cursor: pointer; margin: 10px;"
-    class="list-group-item clearfix"
-    [routerLink]="[recipe?._id]"
-    routerLinkActive="active"
->
-    <div class="card row">
-        <div class="row">
-            <div
-                class="col-sm-5"
-                style="padding: 10px"
-            >
-                <img
-                    class="card-img"
-                    [src]="recipe?.imageUrl"
-                    alt="{{ recipe?.title }}"
-                >
+        <div class="card-body text-center">
+            <div class="card-info ">
+                <h5 class="card-title">{{ recipe?.title }}</h5>
+                <p class="card-text">{{recipe?.description | shorten : 70}}</p>
             </div>
-            <div class="col-sm-7">
-                <div class="card-body">
-                    <h5 class="card-title">{{recipe?.title}}</h5>
-                    <p class="card-text">{{recipe?.description | shorten: 100}}</p>
-                </div>
-            </div>
+            <a
+                [routerLink]="[recipe?._id]"
+                class="btn btn-primary"
+            >Details</a>
         </div>
     </div>
-
-</a> -->
