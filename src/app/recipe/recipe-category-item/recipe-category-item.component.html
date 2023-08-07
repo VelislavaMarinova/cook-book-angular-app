@@ -1,12 +1,12 @@
 <a
 style="cursor: pointer"
-class="category-card list-group-item clearfix "
+class="list-group-item clearfix "
 [routerLink]="['/recipes', category?.catName]"
 >
-<div class="card row" routerLinkActive="active">
+<div class="row category-card" routerLinkActive="active">
         <div
-            class="col-sm-5"
-            style="padding: 5px 10px; margin:0"
+            class="col-md-5 col-12"
+       
         >
             <img
                 class="card-img"
@@ -14,9 +14,9 @@ class="category-card list-group-item clearfix "
                 alt="{{ category?.catName }}"
             >
         </div>
-        <div class="col-sm-7">
-            <div class="card-body">
-                <h5 class="card-title">{{category?.catTitle}}</h5>
+        <div class="col-md-7 col-12 d-flex align-items-center">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{category?.catName}}</h5>
             </div>
         </div>
  

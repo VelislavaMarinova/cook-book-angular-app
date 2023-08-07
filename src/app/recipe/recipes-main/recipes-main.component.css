@@ -1,3 +1,7 @@
 .recipes-main{
+    
     min-height: 80%;
+}
+.sticky-md-top{
+    top:100px;
 }

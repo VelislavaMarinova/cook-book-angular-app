@@ -1,19 +1,26 @@
-.card {
+/* .card {
   height: 8vh;
-  margin: 10px;
+} */
+.category-card{
+  margin-block: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
 }
 
-.card:hover {
+.category-card:hover {
   border: 1px solid black;
 }
 
-.card img {
+img {
   height: 7vh;
   object-fit: cover;
+  border-radius: 4px;
 }
 /* .card.col-sm-5{
     height: 18vh;
 } */
 .active{
   border: 1px solid black;
+  border-radius: 4px;
 }

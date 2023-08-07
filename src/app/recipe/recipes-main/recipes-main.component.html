@@ -1,13 +1,15 @@
 <div class="container recipes-main">
 
   <section>
-      <div class="row ">
-          <div class="col-md-5 border">
-              <app-recipe-categories />
+      <div class="row">
+          <div class="col-md-4 border">
+              <app-recipe-categories ngClass="sticky-md-top"/>
            <!-- <app-recipes-list/> -->
           </div>
-          <div class="col-md-7">
-            <router-outlet></router-outlet>
+          <div class="col-md-8">
+          
+              <router-outlet></router-outlet>
+            
           </div>
         </div>
   </section>
