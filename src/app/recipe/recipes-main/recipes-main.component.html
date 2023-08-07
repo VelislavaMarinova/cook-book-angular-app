@@ -1,16 +1,15 @@
-<div class="container recipes-main">
+<div class="container-sm recipes-main">
 
-  <section>
-      <div class="row">
-          <div class="col-md-4 border">
-              <app-recipe-categories ngClass="sticky-md-top"/>
-           <!-- <app-recipes-list/> -->
-          </div>
-          <div class="col-md-8">
-          
-              <router-outlet></router-outlet>
-            
-          </div>
-        </div>
-  </section>
+
+  <div class="row gx-5">
+    <div class="col-md-4 border">
+      <app-recipe-categories ngClass="sticky-md-top" />
+      <!-- <app-recipes-list/> -->
+    </div>
+    <div class="col-md-8 border">
+
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
 </div>

@@ -1,10 +1,89 @@
-<section>
- <div *ngIf="isLoading">
+<section class="details">
+    <div *ngIf="isLoading">
         <app-loader />
     </div>
-    <p>recipe-details works! AAAA</p>
-    <h1>
-        {{recipe?.title}}
-        
-    </h1>
+    <div class="row row-gap-4">
+        <div class="col-md-12 text-center">
+            <h2>{{recipe?.title}}</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4 border">
+                <img
+                    [src]="recipe?.imageUrl"
+                    alt="{{recipe?.title}}"
+                >
+            </div>
+            <div class="col-md-6 border">
+                <div class="row gy-4">
+                    <div class="col-md-12">
+                        Description: {{recipe?.description}}
+                    </div>
+                    <div class="col-md-12">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-alarm-fill"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zm2.5 5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527z"
+                            />
+                        </svg>
+                        Prepare {{recipe?.prepare}}
+                    </div>
+                    <div class="col-md-12">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-alarm-fill"
+                            viewBox="0 0 16 16"
+                        >
+                            <path
+                                d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zm2.5 5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527z"
+                            />
+                        </svg>
+                        Cook {{recipe?.cook}}
+                    </div>
+                    <div class="col-md-12"><i class="fas fa-utensils"></i> {{recipe?.serves}}</div>
+                    <div class="col-md-12"><i class="fas fa-solid fa-brain"></i> {{recipe?.dificulty}}</div>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <button class="col-sm-2 col-md-6 btn btn-primary">Edit</button>
+                    <button class="col-sm-2 col-md-6 btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <h4>Ingredients</h4>
+                </div>
+                <ul class="list-group">
+                    <li
+                        class="list-group-item"
+                        *ngFor="let ingredient of recipe?.ingredients"
+                    ><i class="fas fa-check"></i> {{ingredient}}</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <h4>Prepare Steps</h4>
+                </div>
+                <ul class="list-group">
+                    <li
+                        class="list-group-item"
+                        *ngFor="let step of recipe?.method"
+                    ><span style="font-weight: 600;">Step:</span> {{step}}</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
 </section>
