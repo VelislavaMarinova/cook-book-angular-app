@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment.development';
 import { Recipe } from './types/recipe';
 import { Category } from './types/category';
 import { UserService } from './user/user.service';
-import { exhaustMap, take } from 'rxjs';
+import { Subject, exhaustMap, take } from 'rxjs';
 
 
 @Injectable({
@@ -15,6 +15,8 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     private userService: UserService) { }
+
+   
 
   getRecipes() {
     const { apiUrl } = environment
@@ -48,5 +50,10 @@ export class ApiService {
 
     return this.http.post<Recipe>(`${apiUrl}/recipes`, recipe,)
      
+  }
+
+  editRecipe(newRecipe:Recipe, id:string){
+    const{apiUrl}=environment;
+    return this.http.put<Recipe>(`${apiUrl}/recipes/${id}`, newRecipe)
   }
 }

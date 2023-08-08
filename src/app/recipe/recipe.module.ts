@@ -11,6 +11,7 @@ import { RecipeCategoriesComponent } from './recipe-categories/recipe-categories
 import { RecipeCategoryItemComponent } from './recipe-category-item/recipe-category-item.component';
 import { RecipeListByCategoryComponent } from './recipe-list-by-category/recipe-list-by-category.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 
 
 
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RecipeCategoriesComponent,
     RecipeCategoryItemComponent,
     RecipeListByCategoryComponent,
+    EditRecipeComponent,
   ],
   imports: [
     CommonModule,
