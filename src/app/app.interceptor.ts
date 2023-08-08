@@ -21,8 +21,22 @@ export class AppInterceptor implements HttpInterceptor {
     constructor(private userService: UserService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      console.log(req.url);
+      
       // Check if the request method is POST and the URL matches the desired one
       if (req.method === 'POST' && req.url === `${apiUrl}/recipes`) {
+        const user = this.userService.user$$?.getValue();
+        if (user && user.accessToken) {
+          // Clone the request and add the Authorization header
+          const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'X-Authorization': user.accessToken
+          });
+          const modifiedReq = req.clone({ headers: headers });
+          return next.handle(modifiedReq);
+        }
+      }else if(req.method==="PUT" && req.url.startsWith(`${apiUrl}/recipes/`)){
+        
         const user = this.userService.user$$?.getValue();
         if (user && user.accessToken) {
           // Clone the request and add the Authorization header

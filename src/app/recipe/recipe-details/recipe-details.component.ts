@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Params, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/types/recipe';
 import { UserService } from 'src/app/user/user.service';
@@ -12,6 +12,7 @@ import { UserService } from 'src/app/user/user.service';
 export class RecipeDetailsComponent {
   recipe: Recipe | undefined
   isLoading: boolean = true;
+  isEditMode: boolean = false;
 
   id: string = '';
 
@@ -20,6 +21,7 @@ export class RecipeDetailsComponent {
     private userService: UserService,
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) { }
 
   //use isLogged for logic in detailsPage
@@ -52,6 +54,11 @@ export class RecipeDetailsComponent {
           }
         })
     })
+  }
+  onEditRecipe(recipeId: string): void {
+
+
+   
   }
 
 }

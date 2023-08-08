@@ -1,5 +1,5 @@
 <section class="add-recipe">
-    <h1>Add Recipe</h1>
+    <h1>Recipe Edit</h1>
     <form
         class="add-recipe-form"
         [formGroup]="recipeForm"
@@ -118,7 +118,8 @@
                         <small
                             class="input-help form-text "
                             *ngIf="!recipeForm.get('imageUrl')?.valid && recipeForm.get('imageUrl')?.touched"
-                        ><ng-container *ngIf="recipeForm.get('imageUrl')?.hasError('required')">
+                        >
+                            <ng-container *ngIf="recipeForm.get('imageUrl')?.hasError('required')">
                                 Image URL is required!
                             </ng-container>
                             <ng-container *ngIf="recipeForm.get('imageUrl')?.hasError('invalidImageUrl')">
@@ -164,7 +165,7 @@
                                         >
                                         <small
                                             class="input-help form-text "
-                                            *ngIf="!ingredientsFormArray.controls[i].get('ingredient')?.valid && ingredientsFormArray.controls[i].get('ingredient')?.touched"
+                                            *ngIf="!ingredientsFormArray.controls[i].get('ingredient')?.valid"
                                         >Ingredient is required!</small>
 
                                     </div>
@@ -221,7 +222,7 @@
 
                                         <small
                                             class="input-help form-text "
-                                            *ngIf="!methodFormArray.controls[i].get('step')?.valid && methodFormArray.controls[i].get('step')?.touched"
+                                            *ngIf="!methodFormArray.controls[i].get('step')?.valid "
                                         >Method is required!</small>
                                     </div>
 
@@ -241,6 +242,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 offset-md-5">
+
                     <div
                         class="alert alert-danger"
                         *ngIf="error"
@@ -251,8 +253,7 @@
                     <button
                         type="submit"
                         class=" btn btn-primary mb-2"
-                        [disabled]="!recipeForm.valid"
-                    >Add Recipe</button>
+                    >Save Recipe</button>
                 </div>
             </div>
         </div>

@@ -1,22 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { Recipe } from 'src/app/types/recipe';
 import { imageUrlValidator } from '../validators';
 
-
 @Component({
-  selector: 'app-new-recipe',
-  templateUrl: './new-recipe.component.html',
-  styleUrls: ['./new-recipe.component.css']
+  selector: 'app-edit-recipe',
+  templateUrl: './edit-recipe.component.html',
+  styleUrls: ['./edit-recipe.component.css']
 })
-export class NewRecipeComponent implements OnInit {
+export class EditRecipeComponent implements OnInit {
   recipeForm!: FormGroup;
   isLoading: boolean = false;
-  error: string | undefined
+  recipe: Recipe | undefined
+  isEditMode: boolean = false;
+  id: string = '';
+  error: string | undefined;
+
+
 
   constructor(
     private apiService: ApiService,
-    ) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) { }
 
   createForm() {
     this.recipeForm = new FormGroup({
@@ -50,14 +58,61 @@ export class NewRecipeComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.createForm()
+    this.createForm();
+    this.loadData();
+  }
+
+  loadData() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+
+      this.id = params['recipeId'];
+
+      this.apiService.getRecipe(this.id).subscribe(
+        {
+          next: (fetchedRecipe) => {
+            this.recipe = fetchedRecipe;
+            console.log(this.recipe);
+
+            this.isLoading = false
+
+            this.recipeForm.patchValue({
+              title: this.recipe.title,
+              category: this.recipe.category,
+              dificulty: this.recipe.dificulty,
+              prepare: this.recipe.prepare,
+              cook: this.recipe.cook,
+              serves: this.recipe.serves,
+              description: this.recipe.description,
+              imageUrl: this.recipe.imageUrl,
+            });
+
+            // Clear existing form arrays
+            this.ingredientsFormArray.clear();
+            this.methodFormArray.clear();
+
+            // Populate form arrays
+            for (const ingredient of this.recipe.ingredients) {
+              this.onAddIngredient(ingredient);
+            }
+
+            for (const step of this.recipe.method) {
+              this.onAddStep(step);
+            }
+          },
+          error: errorMessage => {
+            this.error = errorMessage;
+            this.isLoading = false;
+          }
+        })
+    })
   }
 
   onSubmit() {
     if (!this.recipeForm.valid) {
       return
     }
-    this.isLoading=true
+
+    this.isLoading = true
     const ingredients: string[] = [];
     const method: string[] = [];
 
@@ -68,7 +123,7 @@ export class NewRecipeComponent implements OnInit {
     this.recipeForm.value.method.forEach((element: { step: string; }) => {
       method.push(element.step)
     });
-    
+
     if (ingredients.length === 0) {
       this.error = 'Method is required!'
       throw new Error('Ingredients are required!')
@@ -79,12 +134,16 @@ export class NewRecipeComponent implements OnInit {
 
     this.recipeForm.value.method = method
     this.recipeForm.value.ingredients = ingredients
-   
-    
-    this.apiService.addRecipe(this.recipeForm.value).subscribe(
+
+    console.log(this.recipeForm.value, 'recipeForm');
+
+    this.apiService.editRecipe(this.recipeForm.value, this.id).subscribe(
       {
         next: (response) => {
-          this.isLoading = false
+          this.isLoading = false;
+          console.log(response);
+
+          this.router.navigate([`/recipes/${this.recipe?.category}/${this.recipe?._id}`]);
         },
         error: errorMessage => {
           this.error = errorMessage.error.message;
@@ -92,18 +151,16 @@ export class NewRecipeComponent implements OnInit {
         }
 
       })
-      this.recipeForm.reset();
-    //   response => {
-    //   console.log(response);
-    // });
+    // this.recipeForm.reset();
+
 
   }
-  onAddIngredient() {
+  onAddIngredient(ingredient?: string) {
     const control = (<FormArray>this.recipeForm.controls['ingredients']);
 
     control.push(
       new FormGroup({
-        ingredient: new FormControl('', [Validators.required]),
+        ingredient: new FormControl(ingredient || '', [Validators.required]),
       })
     )
   };
@@ -114,12 +171,12 @@ export class NewRecipeComponent implements OnInit {
 
   }
 
-  onAddStep() {
+  onAddStep(step?: string) {
     const control = (<FormArray>this.recipeForm.controls['method']);
 
     control.push(
       new FormGroup({
-        step: new FormControl('', [Validators.required]),
+        step: new FormControl(step || '', [Validators.required]),
       })
     )
   };
@@ -132,3 +189,10 @@ export class NewRecipeComponent implements OnInit {
 
 
 }
+
+
+// ngOnInit(): void {
+//   this.loadData()
+// }
+
+// }
