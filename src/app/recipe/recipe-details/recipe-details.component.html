@@ -7,14 +7,31 @@
             <h2>{{recipe?.title}}</h2>
         </div>
         <div class="row">
-            <div class="col-md-4  mb-3">
+            <div class="img col-md-4  mb-3">
                 <img
+                    class="border"
                     [src]="recipe?.imageUrl"
                     alt="{{recipe?.title}}"
                 >
+                <p>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-person-circle"
+                        viewBox="0 0 16 16"
+                    >
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path
+                            fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                        />
+                    </svg> Author: {{recipe?.author | uppercase}}
+                </p>
             </div>
             <div class="col-md-6  mb-3">
-                <div class="row gy-4 ">
+                <div class="row gy-3 ">
                     <div class="col-md-12">
                         Description: {{recipe?.description}}
                     </div>
@@ -53,10 +70,19 @@
 
                 </div>
             </div>
-            <div class="buttons col-md-2 mb-3">
+            <div
+                class="buttons col-md-2 mb-3"
+                *ngIf="isOwner"
+            >
                 <div class="row ">
-                    <a class="col-3 col-sm-3 col-md-12 col-lg-8 btn btn-primary mb-2" routerLink="/edit-recipe/{{recipe?._id}}" >Edit</a>
-                    <a class="col-3 col-sm-3 col-md-12  col-lg-8 btn btn-danger mb-2" routerLink="/delete-recipe/{{recipe?._id}}">Delete</a>
+                    <a
+                        class="col-3 col-sm-3 col-md-12 col-lg-8 btn btn-primary mb-2"
+                        routerLink="/edit-recipe/{{recipe?._id}}"
+                    >Edit</a>
+                    <a
+                        class="col-3 col-sm-3 col-md-12  col-lg-8 btn btn-danger mb-2"
+                        routerLink="/delete-recipe/{{recipe?._id}}"
+                    >Delete</a>
                 </div>
             </div>
         </div>

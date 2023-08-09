@@ -29,8 +29,13 @@ export class ApiService {
   }
 
   getRecipesByCategory(category: string) {
-    const { apiUrl } = environment
+    const { apiUrl } = environment;
     return this.http.get<Recipe[]>(`${apiUrl}/recipes?where=category%3D%22${category}%22`);
+  }
+
+  getRecipesByUserId(userId: string) {
+    const { apiUrl } = environment;
+    return this.http.get<Recipe[]>(`${apiUrl}/recipes?where=_ownerId%3D%22${userId}%22`)
   }
 
   getRecipe(recipeId: string) {
@@ -58,8 +63,8 @@ export class ApiService {
   }
 
   deleteRecipe(recipeId: string) {
-    console.log("del",recipeId);
-    
+    console.log("del", recipeId);
+
     const { apiUrl } = environment;
     return this.http.delete(`${apiUrl}/recipes/${recipeId}`)
   }

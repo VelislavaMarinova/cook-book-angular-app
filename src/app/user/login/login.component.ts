@@ -34,7 +34,7 @@ export class LoginComponent {
 
           console.log(resData);
           this.isLoading = false;
-          this.router.navigate(['/recipes']);
+          this.router.navigate(['/']);
           loginForm.reset()
           
         }, error: errorMessage => {

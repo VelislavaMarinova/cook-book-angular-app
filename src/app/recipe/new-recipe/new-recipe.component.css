@@ -8,6 +8,10 @@ textarea.ng-invalid.ng-touched{
 .add-recipe-form .input-help{
   color: red
 }
+.add-recipe-form{
+  background-color: antiquewhite;
+  border-radius: 16px;
+}
 /* .container-fluid{
  display: grid;
 } */

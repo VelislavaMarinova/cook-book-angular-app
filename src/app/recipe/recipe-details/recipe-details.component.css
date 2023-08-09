@@ -1,9 +1,10 @@
 .details{
     width: 100%;
 }
-img{
+.img img{
     width: 100%;
     border-radius: 8px;
+  
 }
 .buttons .btn{
  margin-right: 2rem;

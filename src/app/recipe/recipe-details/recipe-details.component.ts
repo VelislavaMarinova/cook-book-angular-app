@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/types/recipe';
 import { UserService } from 'src/app/user/user.service';
@@ -12,7 +13,12 @@ import { UserService } from 'src/app/user/user.service';
 export class RecipeDetailsComponent {
   recipe: Recipe | undefined
   isLoading: boolean = true;
-  isEditMode: boolean = false;
+
+
+  isAuthenticated = false;
+  private userSub!: Subscription;
+  username: string | undefined;
+  isOwner: boolean = false
 
   id: string = '';
 
@@ -30,10 +36,22 @@ export class RecipeDetailsComponent {
   // }
 
   ngOnInit(): void {
+
+    this.userSub = this.userService.user$$.subscribe(user => {
+      this.isAuthenticated = !!user;
+      this.username = user?.username;
+    });
     this.loadData()
     // this.fetchRecipe();
 
-
+    // console.log(this.username, "from user");
+    // console.log(this.recipe!.author, "fromRecipe");
+    
+    
+    // if (this.recipe?.author === this.username) {
+    //   this.isOwner = true;
+    // }
+    
   }
   loadData() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -46,6 +64,9 @@ export class RecipeDetailsComponent {
             this.recipe = fetchedRecipe;
             this.isLoading = false
             console.log(this.recipe);
+            if(this.recipe.author===this.username){
+              this.isOwner=true;
+            }
           },
           error: (err) => {
             this.isLoading = false
@@ -55,6 +76,6 @@ export class RecipeDetailsComponent {
         })
     })
   }
- 
+
 
 }
