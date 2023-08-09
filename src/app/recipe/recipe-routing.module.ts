@@ -9,6 +9,7 @@ import { RecipeCategoryItemComponent } from './recipe-category-item/recipe-categ
 import { RecipeListByCategoryComponent } from './recipe-list-by-category/recipe-list-by-category.component';
 import { AuthGuard } from '../core/guards/authGuard';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,12 @@ const routes: Routes = [
    {
     path: 'edit-recipe/:recipeId',
     component: EditRecipeComponent,
+    // canActivate: [AuthGuard]
+
+  },
+  {
+    path: 'delete-recipe/:recipeId',
+    component: DeleteRecipeComponent,
     // canActivate: [AuthGuard]
 
   },

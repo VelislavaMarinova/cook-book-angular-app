@@ -27,7 +27,7 @@ export class AppInterceptor implements HttpInterceptor {
       if (req.method === 'POST' && req.url === `${apiUrl}/recipes`) {
         const user = this.userService.user$$?.getValue();
         if (user && user.accessToken) {
-          // Clone the request and add the Authorization header
+         
           const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'X-Authorization': user.accessToken
@@ -39,7 +39,20 @@ export class AppInterceptor implements HttpInterceptor {
         
         const user = this.userService.user$$?.getValue();
         if (user && user.accessToken) {
-          // Clone the request and add the Authorization header
+          
+          const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'X-Authorization': user.accessToken
+          });
+          const modifiedReq = req.clone({ headers: headers });
+          return next.handle(modifiedReq);
+        }
+      }else if(req.method==="DELETE" && req.url.startsWith(`${apiUrl}/recipes`)){
+        console.log("intercept");
+        
+        const user = this.userService.user$$?.getValue();
+        if (user && user.accessToken) {
+        
           const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'X-Authorization': user.accessToken

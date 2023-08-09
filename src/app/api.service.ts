@@ -16,7 +16,7 @@ export class ApiService {
     private http: HttpClient,
     private userService: UserService) { }
 
-   
+
 
   getRecipes() {
     const { apiUrl } = environment
@@ -33,9 +33,9 @@ export class ApiService {
     return this.http.get<Recipe[]>(`${apiUrl}/recipes?where=category%3D%22${category}%22`);
   }
 
-  getRecipe(id: string) {
+  getRecipe(recipeId: string) {
     const { apiUrl } = environment;
-    return this.http.get<Recipe>(`${apiUrl}/recipes/${id}`)
+    return this.http.get<Recipe>(`${apiUrl}/recipes/${recipeId}`)
 
   }
 
@@ -49,11 +49,18 @@ export class ApiService {
     const { apiUrl } = environment;
 
     return this.http.post<Recipe>(`${apiUrl}/recipes`, recipe,)
-     
+
   }
 
-  editRecipe(newRecipe:Recipe, id:string){
-    const{apiUrl}=environment;
-    return this.http.put<Recipe>(`${apiUrl}/recipes/${id}`, newRecipe)
+  editRecipe(newRecipe: Recipe, recipeId: string) {
+    const { apiUrl } = environment;
+    return this.http.put<Recipe>(`${apiUrl}/recipes/${recipeId}`, newRecipe)
+  }
+
+  deleteRecipe(recipeId: string) {
+    console.log("del",recipeId);
+    
+    const { apiUrl } = environment;
+    return this.http.delete(`${apiUrl}/recipes/${recipeId}`)
   }
 }
