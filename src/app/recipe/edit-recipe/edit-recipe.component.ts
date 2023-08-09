@@ -63,6 +63,7 @@ export class EditRecipeComponent implements OnInit {
   }
 
   loadData() {
+    this.isLoading = true
     this.activatedRoute.params.subscribe((params: Params) => {
 
       this.id = params['recipeId'];
@@ -86,11 +87,11 @@ export class EditRecipeComponent implements OnInit {
               imageUrl: this.recipe.imageUrl,
             });
 
-            // Clear existing form arrays
+            
             this.ingredientsFormArray.clear();
             this.methodFormArray.clear();
 
-            // Populate form arrays
+          
             for (const ingredient of this.recipe.ingredients) {
               this.onAddIngredient(ingredient);
             }
@@ -125,7 +126,7 @@ export class EditRecipeComponent implements OnInit {
     });
 
     if (ingredients.length === 0) {
-      this.error = 'Method is required!'
+      this.error = 'Ingredients are required!'
       throw new Error('Ingredients are required!')
     } else if (method.length === 0) {
       this.error = 'Method is required!'
@@ -151,9 +152,6 @@ export class EditRecipeComponent implements OnInit {
         }
 
       })
-    // this.recipeForm.reset();
-
-
   }
   onAddIngredient(ingredient?: string) {
     const control = (<FormArray>this.recipeForm.controls['ingredients']);
@@ -183,16 +181,9 @@ export class EditRecipeComponent implements OnInit {
 
   onRemoveStep(index: number) {
     const control = (<FormArray>this.recipeForm.controls['method']);
-    control.removeAt(index)
+    control.removeAt(index);
 
   }
 
-
 }
 
-
-// ngOnInit(): void {
-//   this.loadData()
-// }
-
-// }

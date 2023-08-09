@@ -55,10 +55,6 @@ export class RecipeDetailsComponent {
         })
     })
   }
-  onEditRecipe(recipeId: string): void {
-
-
-   
-  }
+ 
 
 }

@@ -13,7 +13,7 @@ body {
 }
 .btn-primary:hover {
   background-color: antiquewhite;
-  border: 2px solid rgba(76, 55, 55, 0.5);
+  border: 2px solid rgba(76, 55, 55,);
   color: var(--bs-body-color);
 }
 .btn-primary:disabled{
@@ -33,8 +33,8 @@ a {
   min-height: 50px;
   font-size: 2rem;
 }
-.container{
-  
+.container-md{
+  min-height: 84%;
 }
 
 /* @media (min-width: 576px) {

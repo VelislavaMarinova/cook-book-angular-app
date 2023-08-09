@@ -1,4 +1,7 @@
-<section class="add-recipe">
+<div *ngIf="isLoading">
+    <app-loader />
+</div>
+<div *ngIf="!isLoading" class="add-recipe">
     <h1>Recipe Edit</h1>
     <form
         class="add-recipe-form"
@@ -143,7 +146,7 @@
                                     type="button"
                                     class="btn btn-primary"
                                     (click)="onAddIngredient()"
-                                >Add Ingredient</button>
+                                >Add another ngredient</button>
                             </div>
                         </div>
                         <div class="row">
@@ -194,7 +197,7 @@
                                     type="button"
                                     class="btn btn-primary"
                                     (click)="onAddStep()"
-                                >Add Step</button>
+                                >Add another step</button>
                             </div>
                         </div>
                         <div class="row">
@@ -209,11 +212,7 @@
                                     [formGroupName]="i"
                                 >
                                     <div class="col-md-10">
-                                        <!-- <input
-                                            type="text"
-                                            class="form-control"
-                                            formControlName="step"
-                                        > -->
+
                                         <textarea
                                             class="form-control"
                                             formControlName="step"
@@ -258,4 +257,4 @@
             </div>
         </div>
     </form>
-</section>
+</div>
