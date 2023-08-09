@@ -1,6 +1,7 @@
 /* .recipes-main{
     
-    min-height: 90%;
+    background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url("https://images.pexels.com/photos/14639227/pexels-photo-14639227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size: cover;
 } */
 .sticky-md-top{
     top:105px;

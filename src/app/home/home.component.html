@@ -1,46 +1,33 @@
-<div class="container border">
-    container
-</div>
-<div class="container-fluid border">
-    container flud
-</div>
-<div class="container-md border">
-    container md
-</div>
+<div class="container">
 
-<div class="row">
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    <div class="col-xxl-1 col-xl-2 col-lg-3  col-md-4 col-sm-5 col-xs-6 border">asd</div>
-    </div>
-
-<!-- <div class="container">
-
-    <section class="home" >
+    <section class="home">
         <div *ngIf="isLoading">
             <app-loader />
         </div>
-        <div *ngIf="!isLoading" >
-            <div *ngIf="!noRecipesInTheList" class="home-cards">
+        <div *ngIf="!isLoading">
+         
+            <div class="row p-4" >
+                <div class="col-12">
+                    <h1 class="text-center">Latest added recipes...</h1>
+                </div>
+                <div *ngIf="noRecipesInTheList">
+                    <app-no-recipes />
+                </div>
+            </div>
+           
+            <div
+                *ngIf="!noRecipesInTheList"
+                class="home-cards row row-gap-3 gx-3 items"
+            >
                 <app-recipe-item
-                 *ngFor="let recipe of recipeList"
-                 [recipe]="recipe">
+                    *ngFor="let recipe of recipeList"
+                    [recipe]="recipe"
+                    ngClass="col-6 col-sm-6 col-5 col-lg-3 "
+                >
                 </app-recipe-item>
             </div>
         </div>
-        
-        <div *ngIf="noRecipesInTheList">
-            There are no recipes. You can <a routerLink="/add-recipe">add recipe</a>.
-        </div>
+
     
     </section>
-</div> -->
+</div>

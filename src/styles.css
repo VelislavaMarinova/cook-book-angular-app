@@ -35,6 +35,8 @@ a {
 }
 .container-md{
   min-height: 84%;
+  background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url("https://images.pexels.com/photos/14639227/pexels-photo-14639227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
 }
 
 /* @media (min-width: 576px) {

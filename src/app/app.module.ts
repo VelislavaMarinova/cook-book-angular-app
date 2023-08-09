@@ -11,11 +11,12 @@ import { UserModule } from './user/user.module';
 import { RecipeModule } from './recipe/recipe.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppInterceptor } from './app.interceptor';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-   
+   ProfileComponent,
     HomeComponent,
   ],
   imports: [

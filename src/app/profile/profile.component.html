@@ -1,0 +1,37 @@
+<section class="profile">
+    <div *ngIf="isLoading">
+        <app-loader />
+    </div>
+    <div *ngIf="!isLoading">
+
+        <div class="row p-4">
+            <div class="col-12">
+                <p>Username: {{username}}</p>
+                <p>Email: {{email}}</p>
+                <h4>All recipes added from {{username | uppercase}}</h4>
+            </div>
+            <div *ngIf="noRecipesInTheList">
+                <app-no-recipes />
+            </div>
+        </div>
+
+        <div
+            *ngIf="!noRecipesInTheList"
+            class="home-cards row row-gap-3 gx-3 items"
+        >
+        <div class="col-xs-12 text-center">{{numLoadedRecipes}} loaded recipes from total: {{recipes.length}}</div>
+
+            <app-recipe-item
+                *ngFor="let recipe of recipesToLoad"
+                [recipe]="recipe"
+                ngClass="col-6 col-sm-6 col-5 col-lg-3 "
+            >
+            </app-recipe-item>
+            <div class="col-12 text-center load-more" *ngIf="!noRecipesInTheList">
+                <button [disabled]="!loadMore" class="btn btn-primary mb-4 mt-4" (click)="onLoadMore()" >Load More</button>
+            </div>
+        </div>
+    </div>
+
+
+</section>

@@ -16,14 +16,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.onFetchRecipes()
+    this.loadData()
   }
-  onFetchRecipes() {
+ loadData() {
     this.apiService.getRecipesByLimit().subscribe(
       {
         next: (recipes) => {
 
-          this.recipeList = recipes;
+          this.recipeList =recipes;
 
           if (this.recipeList.length === 0) {
             this.noRecipesInTheList = true;

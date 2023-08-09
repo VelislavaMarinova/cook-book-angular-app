@@ -26,24 +26,12 @@ export class RecipeListByCategoryComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
   ) { }
 
-  //use isLogged for logic in detailsPage
-  // get isLogged(): boolean {
-  //   return this.userService.isLogged
-  // }
-
   ngOnInit(): void {
-    console.log(this.recipesToLoad, 'recipesToLoad-1');
-
-
     this.loadData()
-
   }
 
   loadData() {
-    console.log(this.recipesToLoad, "recipesToLoad-2");
-
     this.activatedRoute.params.subscribe((params: Params) => {
-      //from params id comes as a string, so it is need to be cast to number
       this.category = params['category'];
       this.numLoadedRecipes = 0;
       this.isLoading = true;

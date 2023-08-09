@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
+import { NoRecipesComponent } from './no-recipes/no-recipes.component';
 
 
 
@@ -9,13 +10,15 @@ import { ShortenPipe } from './pipes/shorten.pipe';
   declarations: [
     LoaderComponent,
     ShortenPipe,
+    NoRecipesComponent,
   ],
   imports: [
     CommonModule
   ],
   exports: [
     LoaderComponent,
-    ShortenPipe
+    ShortenPipe,
+    NoRecipesComponent
   ]
 })
 export class SharedModule { }
