@@ -1,19 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-brown:#908279;
+  --color-light: antiquewhite;
+ 
 
+}
 html,
 body {
-  background-color: antiquewhite;
+  background-color: var(--color-light);
   height: 100%;
 }
 
 
 .btn-primary {
-  background-color: rgba(76, 55, 55, 0.5);
+  background-color:var(--color-brown);
   border: 2px solid transparent;
 }
 .btn-primary:hover {
   background-color: antiquewhite;
-  border: 2px solid rgba(76, 55, 55,);
+  border: 2px solid var(--color-brown);
   color: var(--bs-body-color);
 }
 .btn-primary:disabled{

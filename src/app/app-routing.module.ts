@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,15 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },  {
+    path: 'profile',
+    component: ProfileComponent
   },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
+ //{path: 'users', loadChildren:()=>import('./user/user.module').then((m) => m.UserModule) }//'./recipe/recipe-routing.module.ts'
   // { path: '**', component: NotFoundComponent },
   // {
   //   path: 'auth',
