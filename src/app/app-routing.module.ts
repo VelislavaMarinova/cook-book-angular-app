@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewRecipeComponent } from './recipe/new-recipe/new-recipe.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 const routes: Routes = [
   {
@@ -16,11 +17,17 @@ const routes: Routes = [
     component: HomeComponent
   },  {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    
   },
   {
     path: 'add-recipe',
     component: NewRecipeComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-category',
+    component: AddCategoryComponent,
     // canActivate: [AuthGuard]
   },
   {

@@ -24,35 +24,15 @@ export class AppInterceptor implements HttpInterceptor {
       console.log(req.url);
       
       // Check if the request method is POST and the URL matches the desired one
-      if (req.method === 'POST' && req.url === `${apiUrl}/recipes`) {
+      if (
+        (req.method === 'POST' && req.url === `${apiUrl}/recipes`)||
+        (req.method==="PUT" && req.url.startsWith(`${apiUrl}/recipes/`))||
+        (req.method==="DELETE" && req.url.startsWith(`${apiUrl}/recipes`))||
+        (req.method==="POST" && req.url.startsWith(`${apiUrl}/categories`))
+        ){
         const user = this.userService.user$$?.getValue();
         if (user && user.accessToken) {
          
-          const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'X-Authorization': user.accessToken
-          });
-          const modifiedReq = req.clone({ headers: headers });
-          return next.handle(modifiedReq);
-        }
-      }else if(req.method==="PUT" && req.url.startsWith(`${apiUrl}/recipes/`)){
-        
-        const user = this.userService.user$$?.getValue();
-        if (user && user.accessToken) {
-          
-          const headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'X-Authorization': user.accessToken
-          });
-          const modifiedReq = req.clone({ headers: headers });
-          return next.handle(modifiedReq);
-        }
-      }else if(req.method==="DELETE" && req.url.startsWith(`${apiUrl}/recipes`)){
-        console.log("intercept");
-        
-        const user = this.userService.user$$?.getValue();
-        if (user && user.accessToken) {
-        
           const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'X-Authorization': user.accessToken

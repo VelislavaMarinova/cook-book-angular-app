@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppInterceptor } from './app.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ProfileComponent,
     HomeComponent,
     NotFoundComponent,
+    AddCategoryComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,12 +15,15 @@ export class NewRecipeComponent implements OnInit {
   recipeForm!: FormGroup;
   isLoading: boolean = false;
   error: string | undefined;
-  recipe: Recipe | undefined
+  recipe: Recipe | undefined;
+  categoriesList: string[] = [];
+
+
 
   constructor(
     private apiService: ApiService,
     private router: Router
-    ) { }
+  ) { }
 
   createForm() {
     this.recipeForm = new FormGroup({
@@ -55,13 +58,38 @@ export class NewRecipeComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm()
+    this.loadCategories()
   }
+
+  loadCategories() {
+    this.apiService.getCategories().subscribe(
+      {
+        next: (categories) => {
+          categories.forEach(cat => {
+            this.categoriesList.push(cat.catName)
+          })
+          
+          console.log(this.categoriesList);
+
+
+          this.isLoading = false
+          console.log('from categories', this.categoriesList)
+
+        },
+        error: (err) => {
+          this.isLoading = false
+          console.log(`Error ${err}`);
+        }
+      }
+    );
+  }
+
 
   onSubmit() {
     if (!this.recipeForm.valid) {
       return
     }
-    this.isLoading=true
+    this.isLoading = true
     const ingredients: string[] = [];
     const method: string[] = [];
 
@@ -72,7 +100,7 @@ export class NewRecipeComponent implements OnInit {
     this.recipeForm.value.method.forEach((element: { step: string; }) => {
       method.push(element.step)
     });
-    
+
     if (ingredients.length === 0) {
       this.error = 'Method is required!'
       throw new Error('Ingredients are required!')
@@ -83,13 +111,13 @@ export class NewRecipeComponent implements OnInit {
 
     this.recipeForm.value.method = method
     this.recipeForm.value.ingredients = ingredients
-   
-    
+
+
     this.apiService.addRecipe(this.recipeForm.value).subscribe(
       {
         next: (response) => {
           this.isLoading = false,
-          this.recipe=response;
+            this.recipe = response;
           this.router.navigate([`/recipes/${this.recipe?.category}/details/${this.recipe?._id}`]);
         },
         error: errorMessage => {
@@ -98,7 +126,7 @@ export class NewRecipeComponent implements OnInit {
         }
 
       })
-      this.recipeForm.reset();
+    this.recipeForm.reset();
     //   response => {
     //   console.log(response);
     // });

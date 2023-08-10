@@ -1,9 +1,12 @@
-input.ng-invalid.ng-touched{
-    border: 1px solid red
-  }
-  textarea.ng-invalid.ng-touched{
-    border: 1px solid red
-  }
-  .add-recipe-form .input-help{
-    color: red
-  }
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+.add-recipe-form .input-help {
+  color: red;
+}
+label {
+  font-weight: 600;
+}
