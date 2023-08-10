@@ -14,7 +14,7 @@ import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'recipes',
   
     component: RecipesMainComponent,
   

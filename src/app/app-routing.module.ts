@@ -20,7 +20,7 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
- {path: 'recipes', loadChildren:()=>import('./recipe/recipe.module').then((m) => m.RecipeModule) }//'./recipe/recipe-routing.module.ts'
+
   // { path: '**', component: NotFoundComponent },
   // {
   //   path: 'auth',

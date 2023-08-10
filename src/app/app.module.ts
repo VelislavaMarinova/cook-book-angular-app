@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component'
 import { SharedModule } from './shared/shared.module';
+import { RecipeModule } from './recipe/recipe.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppInterceptor } from './app.interceptor';
 import { ProfileComponent } from './profile/profile.component';
@@ -24,7 +25,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     SharedModule,
 
-   
+    RecipeModule,
     FormsModule,
     ReactiveFormsModule
   ],
