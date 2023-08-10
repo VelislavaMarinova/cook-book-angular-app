@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { RecipesMainComponent } from './recipes-main/recipes-main.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
-import { RecipeItemComponent } from './recipe-item/recipe-item.component';
+// import { RecipeItemComponent } from '../shared/recipe-item.component';
 import { RecipeCategoriesComponent } from './recipe-categories/recipe-categories.component';
 import { RecipeCategoryItemComponent } from './recipe-category-item/recipe-category-item.component';
 import { RecipeListByCategoryComponent } from './recipe-list-by-category/recipe-list-by-category.component';
@@ -22,7 +22,7 @@ import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
     RecipeDetailsComponent,
     RecipesMainComponent,
     RecipeStartComponent,
-    RecipeItemComponent,
+    // RecipeItemComponent,
     RecipeCategoriesComponent,
     RecipeCategoryItemComponent,
     RecipeListByCategoryComponent,
@@ -35,6 +35,6 @@ import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
     RecipeRoutingModule,
     ReactiveFormsModule
   ],
-  exports:[RecipeItemComponent]
+  exports:[]//RecipeItemComponent
 })
 export class RecipeModule { }
