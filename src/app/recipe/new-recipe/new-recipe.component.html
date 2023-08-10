@@ -37,13 +37,9 @@
                                 id="category"
                                 formControlName="category"
                             >
-                                <option>drinks</option>
-                                <option>main-dishes</option>
-                                <option>healthy-recipes</option>
-                                <option>quick-recipes</option>
-                                <option>desserts</option>
-                                <option>salads</option>
+                                <option *ngFor="let cat of categoriesList">{{cat}}</option>
                             </select>
+                            <p>Create new category <a routerLink="/add-category">here!</a></p>
                         </div>
                         <div class="form-group">
                             <label for="dificulty">Dificulty level</label>

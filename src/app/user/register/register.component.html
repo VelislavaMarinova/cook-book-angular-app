@@ -73,9 +73,10 @@
                             placeholder="Enter password"
                             ngModel
                             required
+                            minlength="6"
                             #password="ngModel"
                         />
-                        <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a vailid password!</span>
+                        <span class="help-block" *ngIf="!password.valid && password.touched">Password must be at least 6 characters long!</span>
 
 
                     </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../types/user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -60,14 +60,7 @@ export class UserService {
       email: email,
       password: password
     }).pipe(catchError
-      (errorRes => {
-        let errorMessage = 'An unknown error occurred!';
-        if (!errorRes) {
-          return throwError(errorMessage);
-        }//??
-        errorMessage = errorRes.error.message
-        return throwError(errorMessage);
-      }), tap(resData => {
+      (this.handleError), tap(resData => {
         this.handleAuthenticaton(
           resData._id,
           resData.username,
@@ -80,7 +73,7 @@ export class UserService {
   logout() {
     this.user$$.next(undefined);
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/user/login']);
     localStorage.removeItem('userData')
   }
 
@@ -126,6 +119,14 @@ export class UserService {
     this.user$$.next(user)
     localStorage.setItem('userData', JSON.stringify(user))
 
+  }
+
+  private handleError(errorRes: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occurred!';
+    if (errorRes.error && errorRes.error.message) {
+      errorMessage = errorRes.error.message;
+    }
+    return throwError(errorMessage);
   }
 
 }

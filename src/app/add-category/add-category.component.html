@@ -1,0 +1,47 @@
+<div class="row p-5">
+
+    <form
+        class="category-form"
+        [formGroup]="categoryForm"
+        (ngSubmit)="onSubmit()"
+    >
+        <div class="form-group col-md-6">
+            <label for="catName">Category Name</label>
+            <input
+                type="text"
+                id="catName"
+                name="catName"
+                class="form-control"
+                placeholder="Category name"
+                formControlName="catName"
+            >
+            <!-- <span
+                    class="help-block"
+                    *ngIf="!password.valid && password.touched"
+                >Please enter a vailid password!</span> -->
+
+
+        </div>
+        <div class="form-group col-md-6">
+            <label for="imageUrl">Category Image</label>
+            <input
+                type="text"
+                id="imageUrl"
+                name="imageUrl"
+                class="form-control"
+                placeholder="Category image URL"
+                formControlName="imageUrl"
+            >
+            <!-- <span
+                    class="help-block"
+                    *ngIf="!password.valid && password.touched"
+                >Please enter a vailid password!</span> -->
+        </div>
+        <button
+            type="submit"
+            class=" btn btn-primary mb-4 mt-4"
+            [disabled]="!categoryForm.valid"
+        >Add Category</button>
+    </form>
+
+</div>

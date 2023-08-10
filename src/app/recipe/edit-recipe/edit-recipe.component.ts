@@ -17,6 +17,7 @@ export class EditRecipeComponent implements OnInit {
   isEditMode: boolean = false;
   id: string = '';
   error: string | undefined;
+  categoriesList:string[]=[];
 
 
 
@@ -58,6 +59,7 @@ export class EditRecipeComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.loadCategories()
     this.createForm();
     this.loadData();
   }
@@ -106,6 +108,30 @@ export class EditRecipeComponent implements OnInit {
           }
         })
     })
+  }
+
+  
+  loadCategories() {
+    this.apiService.getCategories().subscribe(
+      {
+        next: (categories) => {
+          categories.forEach(cat => {
+            this.categoriesList.push(cat.catName)
+          })
+          
+          console.log(this.categoriesList);
+
+
+          this.isLoading = false
+          console.log('from categories', this.categoriesList)
+
+        },
+        error: (err) => {
+          this.isLoading = false
+          console.log(`Error ${err}`);
+        }
+      }
+    );
   }
 
   onSubmit() {

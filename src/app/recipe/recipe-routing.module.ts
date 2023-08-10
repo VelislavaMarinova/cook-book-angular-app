@@ -38,6 +38,7 @@ const routes: Routes = [
       {
         path: ':category/delete/:recipeId',
         component: DeleteRecipeComponent,
+        canActivate: [AuthGuard]
       },
     ]
   },

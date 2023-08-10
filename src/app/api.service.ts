@@ -63,9 +63,12 @@ export class ApiService {
   }
 
   deleteRecipe(recipeId: string) {
-    console.log("del", recipeId);
-
     const { apiUrl } = environment;
     return this.http.delete(`${apiUrl}/recipes/${recipeId}`)
+  }
+
+  addCategory(newCategory:Category){
+    const { apiUrl } = environment;
+    return this.http.post<Category>(`${apiUrl}/categories`,newCategory)
   }
 }
