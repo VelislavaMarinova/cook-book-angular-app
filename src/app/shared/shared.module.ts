@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { NoRecipesComponent } from './no-recipes/no-recipes.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ import { NoRecipesComponent } from './no-recipes/no-recipes.component';
     NoRecipesComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     LoaderComponent,

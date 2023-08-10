@@ -30,29 +30,17 @@ export class RecipeDetailsComponent {
     private router: Router,
   ) { }
 
-  //use isLogged for logic in detailsPage
-  // get isLogged(): boolean {
-  //   return this.userService.isLogged
-  // }
-
   ngOnInit(): void {
 
     this.userSub = this.userService.user$$.subscribe(user => {
       this.isAuthenticated = !!user;
       this.username = user?.username;
     });
-    this.loadData()
-    // this.fetchRecipe();
 
-    // console.log(this.username, "from user");
-    // console.log(this.recipe!.author, "fromRecipe");
-    
-    
-    // if (this.recipe?.author === this.username) {
-    //   this.isOwner = true;
-    // }
+    this.loadData();
     
   }
+
   loadData() {
     this.activatedRoute.params.subscribe((params: Params) => {
 

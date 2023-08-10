@@ -15,9 +15,7 @@
                     class="btn btn-primary"
                     *ngIf="isAuthenticated"
                 >Details</a>
-                <a *ngIf="!isAuthenticated" routerLink="/login">
-                    Login to view details!
-                </a>
+                <p><a *ngIf="!isAuthenticated" routerLink="/login">Login</a> to view details!</p>
             </div>
         </div>
     </div>

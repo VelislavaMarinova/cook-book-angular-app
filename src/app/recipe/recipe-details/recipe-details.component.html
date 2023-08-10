@@ -1,8 +1,8 @@
-<section class="details">
+<section class="details mb-4 mt-4">
     <div *ngIf="isLoading">
         <app-loader />
     </div>
-    <div class="row row-gap-4">
+    <div *ngIf="!isLoading" class="row row-gap-4">
         <div class="col-md-12 text-center">
             <h2>{{recipe?.title}}</h2>
         </div>
