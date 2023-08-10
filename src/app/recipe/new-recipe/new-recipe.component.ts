@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { imageUrlValidator } from '../validators';
+import { Router } from '@angular/router';
+import { Recipe } from 'src/app/types/recipe';
 
 
 @Component({
@@ -12,10 +14,12 @@ import { imageUrlValidator } from '../validators';
 export class NewRecipeComponent implements OnInit {
   recipeForm!: FormGroup;
   isLoading: boolean = false;
-  error: string | undefined
+  error: string | undefined;
+  recipe: Recipe | undefined
 
   constructor(
     private apiService: ApiService,
+    private router: Router
     ) { }
 
   createForm() {
@@ -84,7 +88,9 @@ export class NewRecipeComponent implements OnInit {
     this.apiService.addRecipe(this.recipeForm.value).subscribe(
       {
         next: (response) => {
-          this.isLoading = false
+          this.isLoading = false,
+          this.recipe=response;
+          this.router.navigate([`/recipes/${this.recipe?.category}/details/${this.recipe?._id}`]);
         },
         error: errorMessage => {
           this.error = errorMessage.error.message;

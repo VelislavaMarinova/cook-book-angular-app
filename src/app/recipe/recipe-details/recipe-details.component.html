@@ -77,11 +77,11 @@
                 <div class="row ">
                     <a
                         class="col-3 col-sm-3 col-md-12 col-lg-8 btn btn-primary mb-2"
-                        routerLink="/edit-recipe/{{recipe?._id}}"
+                        routerLink="/recipes/{{recipe?.category}}/edit/{{recipe?._id}}"
                     >Edit</a>
                     <a
                         class="col-3 col-sm-3 col-md-12  col-lg-8 btn btn-danger mb-2"
-                        routerLink="/delete-recipe/{{recipe?._id}}"
+                        routerLink="/recipes/{{recipe?.category}}/delete/{{recipe?._id}}"
                     >Delete</a>
                 </div>
             </div>

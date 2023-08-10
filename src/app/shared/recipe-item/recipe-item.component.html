@@ -11,7 +11,7 @@
                     <p class="card-text">{{recipe?.description | shorten : 70}}</p>
                 </div>
                 <a
-                    routerLink="/recipes/details/{{recipe?._id}}"
+                    routerLink="/recipes/{{recipe?.category}}/details/{{recipe?._id}}"
                     class="btn btn-primary"
                     *ngIf="isAuthenticated"
                 >Details</a>
