@@ -4,6 +4,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { NoRecipesComponent } from './no-recipes/no-recipes.component';
 import { RouterModule } from '@angular/router';
+import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 
 
 
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
     LoaderComponent,
     ShortenPipe,
     NoRecipesComponent,
+    RecipeItemComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { RouterModule } from '@angular/router';
   exports: [
     LoaderComponent,
     ShortenPipe,
-    NoRecipesComponent
+    NoRecipesComponent,
+    RecipeItemComponent
   ]
 })
 export class SharedModule { }

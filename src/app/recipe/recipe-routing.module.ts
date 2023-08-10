@@ -14,7 +14,7 @@ import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 
 const routes: Routes = [
   {
-    path: 'recipes',
+    path: '',
   
     component: RecipesMainComponent,
   
@@ -52,11 +52,7 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
 
   },
-  // {
-  //   path: 'profile',
 
-
-  // }
 ];
 
 @NgModule({
