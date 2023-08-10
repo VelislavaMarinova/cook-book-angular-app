@@ -14,10 +14,10 @@ import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 
 const routes: Routes = [
   {
-    path: 'recipes',
-  
+    path: '',
+
     component: RecipesMainComponent,
-  
+
     children: [
       {
         path: '',
@@ -28,30 +28,32 @@ const routes: Routes = [
         component: RecipeListByCategoryComponent,
       },
       {
-        path: ':category/:recipeId',
-        component: RecipeDetailsComponent
+        path: ':category/details/:recipeId',
+        component: RecipeDetailsComponent,
       },
-    
+      {
+        path: ':category/edit/:recipeId',
+        component: EditRecipeComponent,
+      },
+      {
+        path: ':category/delete/:recipeId',
+        component: DeleteRecipeComponent,
+      },
     ]
   },
-  {
-    path: 'add-recipe',
-    component: NewRecipeComponent,
-    // canActivate: [AuthGuard]
 
-},
-   {
-    path: 'edit-recipe/:recipeId',
-    component: EditRecipeComponent,
-    // canActivate: [AuthGuard]
+  //  {
+  //   path: 'edit-recipe/:recipeId',
+  //   component: EditRecipeComponent,
+  //   // canActivate: [AuthGuard]
 
-  },
-  {
-    path: 'delete-recipe/:recipeId',
-    component: DeleteRecipeComponent,
-    // canActivate: [AuthGuard]
+  // },
+  // {
+  //   path: 'delete-recipe/:recipeId',
+  //   component: DeleteRecipeComponent,
+  //   // canActivate: [AuthGuard]
 
-  },
+  // },
 
 ];
 

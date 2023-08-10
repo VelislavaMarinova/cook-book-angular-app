@@ -53,4 +53,7 @@ export class DeleteRecipeComponent implements OnInit {
     this.router.navigate([`/recipes`]);
     
   }
+  onRefuseDelete(){
+    this.router.navigate([`/recipes/${this.recipe?.category}/details/${this.recipeId}`])
+  }
 }

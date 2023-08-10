@@ -144,7 +144,7 @@ export class EditRecipeComponent implements OnInit {
           this.isLoading = false;
           console.log(response);
 
-          this.router.navigate([`/recipes/${this.recipe?.category}/${this.recipe?._id}`]);
+          this.router.navigate([`/recipes/${this.recipe?.category}/details/${this.recipe?._id}`]);
         },
         error: errorMessage => {
           this.error = errorMessage.error.message;
