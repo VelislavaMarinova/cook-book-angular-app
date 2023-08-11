@@ -69,11 +69,9 @@ export class NewRecipeComponent implements OnInit {
             this.categoriesList.push(cat.catName)
           })
           
-          console.log(this.categoriesList);
 
 
           this.isLoading = false
-          console.log('from categories', this.categoriesList)
 
         },
         error: (err) => {
