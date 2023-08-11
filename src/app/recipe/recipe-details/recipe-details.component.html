@@ -79,10 +79,7 @@
                         class="col-3 col-sm-3 col-md-12 col-lg-8 btn btn-primary mb-2"
                         routerLink="/recipes/{{recipe?.category}}/edit/{{recipe?._id}}"
                     >Edit</a>
-                    <a
-                        class="col-3 col-sm-3 col-md-12  col-lg-8 btn btn-danger mb-2"
-                        routerLink="/recipes/{{recipe?.category}}/delete/{{recipe?._id}}"
-                    >Delete</a>
+                    <button class="col-3 col-sm-3 col-md-12 col-lg-8 mb-2 btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
                 </div>
             </div>
         </div>
@@ -113,3 +110,5 @@
         </div>
     </div>
 </section>
+
+<app-delete-recipe [recipeId]="recipe?._id" [recipeTitle]="recipe?.title"></app-delete-recipe>

@@ -1,59 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Route, Router } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import {  Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-import { Recipe } from 'src/app/types/recipe';
 
 @Component({
   selector: 'app-delete-recipe',
   templateUrl: './delete-recipe.component.html',
   styleUrls: ['./delete-recipe.component.css']
 })
-export class DeleteRecipeComponent implements OnInit {
-  recipeId: string | undefined;
-  recipe: Recipe | undefined;
-  isLoading: boolean = false;
-  error: string | undefined;
-
+export class DeleteRecipeComponent {
+@Input() recipeId: string | undefined;
+@Input() recipeTitle: string | undefined
 
   constructor(
     private apiService: ApiService,
-    private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
-
-  ngOnInit(): void {
-    this.loadData()
-  }
-  loadData() {
-    this.isLoading = true;
-    this.activatedRoute.params.subscribe((params: Params) => {
-
-      this.recipeId = params['recipeId'];
-
-      this.apiService.getRecipe(this.recipeId!).subscribe(
-        {
-          next: (fetchedRecipe) => {
-            this.recipe = fetchedRecipe;
-            // console.log(this.recipe);
-
-            this.isLoading = false
-
-
-          },
-          error: errorMessage => {
-            this.error = errorMessage;
-            this.isLoading = false;
-          }
-        })
-    })
-  }
   onDelete() {
     this.apiService.deleteRecipe(this.recipeId!).subscribe();
     this.router.navigate([`/recipes`]);
-    
   }
-  onRefuseDelete(){
-    this.router.navigate([`/recipes/${this.recipe?.category}/details/${this.recipeId}`])
-  }
+
 }
