@@ -5,6 +5,8 @@ import { Recipe } from './types/recipe';
 import { Category } from './types/category';
 import { UserService } from './user/user.service';
 import { Subject, exhaustMap, take } from 'rxjs';
+import { ApiResponse } from './types/response';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -28,14 +30,20 @@ export class ApiService {
     return this.http.get<Recipe[]>(`${apiUrl}/recipes?limit=4`)
   }
 
-  getRecipesByCategory(category: string) {
-    const { apiUrl } = environment;
-    return this.http.get<Recipe[]>(`${apiUrl}/recipes?where=category%3D%22${category}%22`);
-  }
+  // getRecipesByCategory(category: string) {
+  //   const { apiUrl } = environment;
+  //   return this.http.get<Recipe[]>(`${apiUrl}/recipes?where=category%3D%22${category}%22`);
+  // }
 
   getRecipesByUserId(userId: string) {
     const { apiUrl } = environment;
     return this.http.get<Recipe[]>(`${apiUrl}/recipes?where=_ownerId%3D%22${userId}%22`)
+  }
+  getByCategorySortedByDateWithPagination(category:string,page:number,perPage:number){
+    const { apiUrl } = environment;
+    return this.http.get<ApiResponse>(
+      `${apiUrl}/recipes?where=category%3D%22${category}%22&page=${page}&perPage=${perPage}`)
+      .pipe(map((res: ApiResponse) => res))
   }
 
   getRecipe(recipeId: string) {

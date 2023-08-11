@@ -26,7 +26,7 @@ export class RecipeCategoriesComponent implements OnInit {
           this.categoriesList = categories;
 
           this.isLoading = false
-          console.log('from categories', this.categoriesList)
+          // console.log('from categories', this.categoriesList)
 
         },
         error: (err) => {

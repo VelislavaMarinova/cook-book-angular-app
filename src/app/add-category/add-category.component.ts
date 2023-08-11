@@ -28,7 +28,7 @@ export class AddCategoryComponent implements OnInit {
     });
   };
   onSubmit() {
-    console.log(this.categoryForm.value);
+    // console.log(this.categoryForm.value);
 
     this.apiService.addCategory(this.categoryForm.value).subscribe();
     this.router.navigate([`/recipes`])

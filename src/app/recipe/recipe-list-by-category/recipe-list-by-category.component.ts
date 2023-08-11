@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/types/recipe';
+import { ApiResponse } from 'src/app/types/response';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -9,8 +10,10 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './recipe-list-by-category.component.html',
   styleUrls: ['./recipe-list-by-category.component.css']
 })
+
+
 export class RecipeListByCategoryComponent implements OnInit {
-  recipes: Recipe[] | undefined
+  recipes: Recipe[] = []
   isLoading: boolean = true;
   noRecipesInTheList: boolean = false;
   category: string | undefined;
@@ -19,6 +22,14 @@ export class RecipeListByCategoryComponent implements OnInit {
   numLoadedRecipes: number = 0;
   loadMore: boolean = true;
   recipesToLoad: Recipe[] = [];
+  private page = 1;
+  private perPage = 6
+  totalCount: number = 0
+  loadMoreClickCounter = 0
+  previousCat: string | undefined
+  totalPages: number = 0
+
+
 
   constructor(
 
@@ -27,56 +38,64 @@ export class RecipeListByCategoryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadData()
+    this.loadItems()
   }
-
-  loadData() {
+  loadItems() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.category = params['category'];
-      this.numLoadedRecipes = 0;
+
+
+      if (this.category !== this.previousCat) {
+
+        this.recipes = []
+        this.page = 1
+
+        this.previousCat = this.category
+      }
+
       this.isLoading = true;
       this.noRecipesInTheList = false;
+      this.loadMore = true;
+
+      this.apiService.getByCategorySortedByDateWithPagination(
+        this.category!,
+        this.page,
+        this.perPage
+      ).subscribe((res) => {
 
 
-      this.apiService.getRecipesByCategory(this.category!).subscribe(
-        {
-          next: (result) => {
-            this.recipes = result;
-            if (this.recipes.length === 0) {
-              this.noRecipesInTheList = true;
-              this.recipesToLoad = [];
-            } else {
-              this.recipesToLoad = this.recipes.slice(0, this.numRecipesPerPage);
-              this.numLoadedRecipes = this.recipesToLoad.length;
+        this.recipes = [...res.items];
+        this.totalCount = res.totalCount;
+        this.totalPages = res.totalPages;
+        if (this.totalPages === this.page) {
+          this.loadMore = false
+        }
+      
+        if (this.recipes.length === 0) {
+          this.noRecipesInTheList = true;
+        }
+        this.isLoading = false
 
-              if (this.recipes.length <= this.numRecipesPerPage) {
-                this.loadMore = false;
-              } else {
-                this.loadMore = true;
-              }
-            }
+      })
 
-            console.log(this.recipesToLoad, "recipesToLoad-3");
-
-            this.isLoading = false;
-
-          },
-          error: (err) => {
-            this.isLoading = false
-            console.log(`Error ${err}`);
-          }
-        })
-
-    })
+    }
+    )
   }
   onLoadMore() {
+    if (this.loadMore) {
 
-    this.recipesToLoad = this.recipes!.slice(0, this.numLoadedRecipes + this.numRecipesPerPage)
-    this.numLoadedRecipes = this.recipesToLoad.length;
+      this.page++;
+      this.loadMore = this.page < this.totalPages;
 
-    if (this.numLoadedRecipes === this.recipes?.length) {
-      this.loadMore = false;
+      this.loadMoreItems()
     }
+  }
+  loadMoreItems() {
+    this.apiService.getByCategorySortedByDateWithPagination(this.category!,
+      this.page,
+      this.perPage).subscribe(res => {
+        this.recipes = [...this.recipes, ...res.items]
 
+      })
   }
 }

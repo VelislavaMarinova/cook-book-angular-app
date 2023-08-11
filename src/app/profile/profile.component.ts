@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../user/user.service';
 import { Recipe } from 'src/app/types/recipe';
@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/api.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit, OnDestroy{
   private userSub!: Subscription;
   username: string | undefined;
   email:string | undefined;
@@ -78,6 +78,12 @@ export class ProfileComponent implements OnInit{
       this.loadMore = false;
     }
 
+  }
+
+  ngOnDestroy(): void {
+    if(this.userSub){
+      this.userSub.unsubscribe();
+    }
   }
 
 }
