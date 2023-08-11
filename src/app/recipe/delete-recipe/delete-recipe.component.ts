@@ -35,7 +35,7 @@ export class DeleteRecipeComponent implements OnInit {
         {
           next: (fetchedRecipe) => {
             this.recipe = fetchedRecipe;
-            console.log(this.recipe);
+            // console.log(this.recipe);
 
             this.isLoading = false
 

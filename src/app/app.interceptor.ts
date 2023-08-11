@@ -21,9 +21,6 @@ export class AppInterceptor implements HttpInterceptor {
     constructor(private userService: UserService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      console.log(req.url);
-      
-      // Check if the request method is POST and the URL matches the desired one
       if (
         (req.method === 'POST' && req.url === `${apiUrl}/recipes`)||
         (req.method==="PUT" && req.url.startsWith(`${apiUrl}/recipes/`))||

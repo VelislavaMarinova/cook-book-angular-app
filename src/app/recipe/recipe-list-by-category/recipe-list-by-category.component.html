@@ -14,10 +14,10 @@
            <app-no-recipes/>
         </div>
         <div class="row row-gap-4" *ngIf="!noRecipesInTheList">
-            <div class="col-xs-12 text-center">{{numLoadedRecipes}} loaded recipes from total: {{recipes?.length}}</div>
+            <div class="col-xs-12 text-center">{{recipes.length}} loaded recipes from total: {{totalCount}}</div>
             <div class="row row-gap-3 gx-3 items">
                 <app-recipe-item
-                    *ngFor="let recipe of recipesToLoad; "
+                    *ngFor="let recipe of recipes;"
                     [recipe]="recipe"
                     
                     ngClass="col-sm-6 col-md-6 col-lg-4"

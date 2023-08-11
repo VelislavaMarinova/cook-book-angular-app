@@ -51,7 +51,6 @@ export class RecipeDetailsComponent {
           next: (fetchedRecipe) => {
             this.recipe = fetchedRecipe;
             this.isLoading = false
-            console.log(this.recipe);
             if(this.recipe.author===this.username){
               this.isOwner=true;
             }

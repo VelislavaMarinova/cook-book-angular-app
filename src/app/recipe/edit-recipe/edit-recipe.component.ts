@@ -74,7 +74,7 @@ export class EditRecipeComponent implements OnInit {
         {
           next: (fetchedRecipe) => {
             this.recipe = fetchedRecipe;
-            console.log(this.recipe);
+           
 
             this.isLoading = false
 
@@ -119,11 +119,7 @@ export class EditRecipeComponent implements OnInit {
             this.categoriesList.push(cat.catName)
           })
           
-          console.log(this.categoriesList);
-
-
           this.isLoading = false
-          console.log('from categories', this.categoriesList)
 
         },
         error: (err) => {
@@ -162,13 +158,12 @@ export class EditRecipeComponent implements OnInit {
     this.recipeForm.value.method = method
     this.recipeForm.value.ingredients = ingredients
 
-    console.log(this.recipeForm.value, 'recipeForm');
 
     this.apiService.editRecipe(this.recipeForm.value, this.id).subscribe(
       {
         next: (response) => {
           this.isLoading = false;
-          console.log(response);
+         
 
           this.router.navigate([`/recipes/${this.recipe?.category}/details/${this.recipe?._id}`]);
         },
