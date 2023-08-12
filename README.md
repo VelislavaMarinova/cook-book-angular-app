@@ -19,7 +19,7 @@ The new recipes are added to the existing list, and the page might scroll to sho
 - Recipe Editing and Deletion: Users have full control over recipes they've contributed. They can edit the details of their recipes, including updating ingredients or modifying cooking instructions. Additionally, users can choose to remove their own recipes from the platform.
 
 ![CookBook](src/assets/readme.png)
-![Timeless Trends](src/assets/readme2.png) ![Timeless Trends](src/assets/readme-responsive.png)
+![CookBook](src/assets/readme2.png) ![CookBook](src/assets/readme-responsive.png)
 
 ## Install dependencies: 
 
