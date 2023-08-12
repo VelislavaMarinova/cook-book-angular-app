@@ -6,7 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AuthGuard } from './core/guards/authGuard';
-import { ErrorComponent } from './core/error/error/error.component';
+import { ErrorComponent } from './core/error/error.component';
 
 const routes: Routes = [
   {

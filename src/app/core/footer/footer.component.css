@@ -1,3 +1,15 @@
-footer{
-    background-color:var(--color-brown);
+
+.footer-container{
+background-color: var(--color-brown);
+color: white;
+}
+.footer-header{background-color: var(--color-brown);}
+.footer-info{
+    font-size: 0.8rem;
+}
+.footer-info h6{
+    font-size: 0.8rem;
+}
+.footer-copyright{
+    background-color: var(--color-brown);
 }
