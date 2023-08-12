@@ -1,14 +1,14 @@
 <section class="profile">
-    <div *ngIf="isLoading">
+    <div *ngIf="isLoading" class="loader">
         <app-loader />
     </div>
     <div *ngIf="!isLoading">
 
         <div class="row p-4">
-            <div class="col-12">
+            <div class="col-12 user-info">
                 <p>Username: {{username}}</p>
                 <p>Email: {{email}}</p>
-                <h4>All recipes added from {{username | uppercase}}</h4>
+                <h4>All recipes added from {{username}}</h4>
             </div>
             <div *ngIf="noRecipesInTheList">
                 <app-no-recipes />
