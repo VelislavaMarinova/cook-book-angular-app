@@ -7,7 +7,8 @@
             >
             <div class="card-body text-center">
                 <div class="card-info ">
-                    <h5 class="card-title">{{ recipe?.title }}</h5>
+                    <h5 class="card-title card-title-large">{{ recipe?.title }}</h5>
+                    <h5 class="card-title card-title-responsive">{{ recipe?.title | shorten : 30}}</h5>
                     <p class="card-text">{{recipe?.description | shorten : 70}}</p>
                 </div>
                 <a

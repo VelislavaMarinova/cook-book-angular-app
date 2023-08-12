@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
-import { imageUrlValidator } from '../validators';
+import { imageUrlValidator } from '../../shared/validators/url-validator';
 import { Router } from '@angular/router';
 import { Recipe } from 'src/app/types/recipe';
 
@@ -68,8 +68,6 @@ export class NewRecipeComponent implements OnInit {
           categories.forEach(cat => {
             this.categoriesList.push(cat.catName)
           })
-          
-
 
           this.isLoading = false
 
@@ -125,10 +123,6 @@ export class NewRecipeComponent implements OnInit {
 
       })
     this.recipeForm.reset();
-    //   response => {
-    //   console.log(response);
-    // });
-
   }
   onAddIngredient() {
     const control = (<FormArray>this.recipeForm.controls['ingredients']);

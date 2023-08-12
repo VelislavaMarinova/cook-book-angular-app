@@ -1,5 +1,8 @@
 <section class="profile">
-    <div *ngIf="isLoading" class="loader">
+    <div
+        *ngIf="isLoading"
+        class="loader"
+    >
         <app-loader />
     </div>
     <div *ngIf="!isLoading">
@@ -17,18 +20,23 @@
 
         <div
             *ngIf="!noRecipesInTheList"
-            class="home-cards row row-gap-3 gx-3 items"
+            class="home-cards row row-gap-3 gx-3 items justify-content-center"
         >
-        <div class="col-xs-12 text-center">{{numLoadedRecipes}} loaded recipes from total: {{recipes.length}}</div>
+      
+            <div class="col-xs-12 text-center">{{numLoadedRecipes}} loaded recipes from total: {{recipes.length}}</div>
 
-            <app-recipe-item
-                *ngFor="let recipe of recipesToLoad"
-                [recipe]="recipe"
-                ngClass="col-6 col-sm-6 col-5 col-lg-3 "
+            <div class="col-6 col-sm-6 col-5 col-lg-3" *ngFor="let recipe of recipesToLoad">
+                <app-recipe-item [recipe]="recipe" class="mx-auto"></app-recipe-item>
+            </div>
+            <div
+                class="col-12 text-center load-more"
+                *ngIf="!noRecipesInTheList"
             >
-            </app-recipe-item>
-            <div class="col-12 text-center load-more" *ngIf="!noRecipesInTheList">
-                <button [disabled]="!loadMore" class="btn btn-primary mb-4 mt-4" (click)="onLoadMore()" >Load More</button>
+                <button
+                    [disabled]="!loadMore"
+                    class="btn btn-primary mb-4 mt-4"
+                    (click)="onLoadMore()"
+                >Load More</button>
             </div>
         </div>
     </div>

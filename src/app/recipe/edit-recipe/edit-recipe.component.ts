@@ -3,7 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Recipe } from 'src/app/types/recipe';
-import { imageUrlValidator } from '../validators';
+import { imageUrlValidator } from '../../shared/validators/url-validator';
 
 @Component({
   selector: 'app-edit-recipe',
