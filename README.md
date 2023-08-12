@@ -3,6 +3,10 @@
    - This project is for cooking enthusiasts to explore and share recipes. Users have the ability to browse recipes based on different categories, each featuring a title and an image. To access the full content of a recipe, users need to authenticate either by logging in with an existing profile or creating a new one. Once logged in, users can enjoy various features:
 ## Features
 - Recipe Category Selection: Users can choose a specific category to view a list of recipes depending to their preferences.
+  - Initial Load: When the page loads, the first set of 6 recipes is fetched from the server and displayed.
+  - Load More: The "Load More" button is displayed at the bottom of the list of recipes.
+When the button is clicked, a request is sent to the server to fetch the next set of 6 recipes.
+The new recipes are added to the existing list, and the page might scroll to show the newly loaded recipes.
 
 - Detailed Recipe Information: Logged-in users can access detailed information about each recipe, including ingredients, preparation steps, and cooking instructions.
 
