@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ErrorService } from '../error.service';
+import { ErrorService } from './error.service';
 
 @Component({
   selector: 'app-error',
@@ -13,8 +13,12 @@ export class ErrorComponent {
   constructor(private errorService: ErrorService) {}
 
   ngOnInit(): void {
-    this.apiError$.subscribe((err: any) => {
-      this.errorMsg = err.message;
-    });
+    if(this.apiError$){
+      this.apiError$.subscribe((err: any) => {
+        this.errorMsg = err.message;
+      });
+    }else{
+      this.errorMsg='Unknown Error'
+    }
   }
 }
