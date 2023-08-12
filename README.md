@@ -1,6 +1,6 @@
-# CookBook
-
-This project is generated with Angular version 16.1.4 and focuses on providing a platform for cooking enthusiasts to explore and share recipes. Users have the ability to browse recipes based on different categories, each featuring a title and an image. To access the full content of a recipe, users need to authenticate either by logging in with an existing profile or creating a new one. Once logged in, users can enjoy various features:
+# CookBook Project with responsive design
+   - This project, developed using Angular version 16.1.4, is dedicated to the world of cooking and recipes, enhanced by a responsive design that adapts seamlessly to different devices and screen sizes. Whether you're using a desktop, tablet, or smartphone, the project ensures an optimal and user-friendly experience. 
+   - This project is for cooking enthusiasts to explore and share recipes. Users have the ability to browse recipes based on different categories, each featuring a title and an image. To access the full content of a recipe, users need to authenticate either by logging in with an existing profile or creating a new one. Once logged in, users can enjoy various features:
 ## Features
 - Recipe Category Selection: Users can choose a specific category to view a curated list of recipes tailored to their preferences.
 
