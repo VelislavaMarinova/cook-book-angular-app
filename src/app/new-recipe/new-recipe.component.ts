@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
-import { imageUrlValidator } from '../../shared/validators/url-validator';
+import { imageUrlValidator } from '../shared/validators/url-validator';
 import { Router } from '@angular/router';
 import { Recipe } from 'src/app/types/recipe';
 

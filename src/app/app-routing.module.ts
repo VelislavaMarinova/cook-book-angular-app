@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { NewRecipeComponent } from './recipe/new-recipe/new-recipe.component';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { AuthGuard } from './core/guards/authGuard';
 
 const routes: Routes = [
   {
@@ -18,17 +19,18 @@ const routes: Routes = [
   },  {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
     
   },
   {
     path: 'add-recipe',
     component: NewRecipeComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'add-category',
     component: AddCategoryComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'user',
