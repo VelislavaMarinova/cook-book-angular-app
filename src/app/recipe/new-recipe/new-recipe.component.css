@@ -6,7 +6,8 @@ textarea.ng-invalid.ng-touched{
   border: 1px solid red
 }
 .add-recipe-form .input-help{
-  color: red
+  color: red;
+  font-weight: 600;
 }
 .add-recipe-form label{
   font-weight: 600;
