@@ -18,26 +18,17 @@ The new recipes are added to the existing list, and the page might scroll to sho
 
 - Recipe Editing and Deletion: Users have full control over recipes they've contributed. They can edit the details of their recipes, including updating ingredients or modifying cooking instructions. Additionally, users can choose to remove their own recipes from the platform.
 
-## Development server
+![CookBook](src/assets/readme.png)
+![Timeless Trends](src/assets/readme2.png) ![Timeless Trends](src/assets/readme-responsive.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Install dependencies: 
 
-## Code scaffolding
+`npm install`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Run project:
 
-## Build
+Run `ng serve` for a dev server. 
+Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Data source:
+ DummyJSON: https://dummyjson.com/docs/products
