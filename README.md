@@ -1,6 +1,18 @@
 # CookBook
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+This project is generated with Angular version 16.1.4 and focuses on providing a platform for cooking enthusiasts to explore and share recipes. Users have the ability to browse recipes based on different categories, each featuring a title and an image. To access the full content of a recipe, users need to authenticate either by logging in with an existing profile or creating a new one. Once logged in, users can enjoy various features:
+## Features
+- Recipe Category Selection: Users can choose a specific category to view a curated list of recipes tailored to their preferences.
+
+- Detailed Recipe Information: Logged-in users can access detailed information about each recipe, including ingredients, preparation steps, and cooking instructions.
+
+- User Authentication and Profiles: The platform provides a secure authentication system. Users can create a profile, log in, and access personalized features based on their account.
+
+-Adding New Recipes: Authenticated users can contribute to the platform by adding their own recipes. They can provide all necessary details, such as ingredients, preparation time, and images.
+
+-Category Creation: If users discover a missing category, they have the ability to add new recipe categories, ensuring a diverse and comprehensive collection.
+
+-Recipe Editing and Deletion: Users have full control over recipes they've contributed. They can edit the details of their recipes, including updating ingredients or modifying cooking instructions. Additionally, users can choose to remove their own recipes from the platform.
 
 ## Development server
 
