@@ -6,6 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AuthGuard } from './core/guards/authGuard';
+import { ErrorComponent } from './core/error/error/error.component';
 
 const routes: Routes = [
   {
@@ -40,8 +41,12 @@ const routes: Routes = [
     path: 'recipes',
     loadChildren: () => import('./recipe/recipe.module').then((m) => m.RecipeModule),
   },
-
- { path: '**', component: NotFoundComponent },
+  {
+    path: 'error',
+    component: ErrorComponent,
+   
+  },
+{ path: '**', component: NotFoundComponent },
 
   // { path: 'error', component: ErrorComponent },
 

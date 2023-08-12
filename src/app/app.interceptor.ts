@@ -12,13 +12,18 @@ import { Router } from '@angular/router';
 import { Observable, catchError, exhaustMap, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserService } from './user/user.service';
+import { ErrorService } from './core/error/error.service';
 //   import { ErrorService } from './core/error/error.service';
 
 const { apiUrl } = environment;
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-    constructor(private userService: UserService) {}
+    constructor(
+      private userService: UserService,
+      private router: Router,
+       private errorServie: ErrorService
+       ) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       if (
@@ -37,6 +42,21 @@ export class AppInterceptor implements HttpInterceptor {
           const modifiedReq = req.clone({ headers: headers });
           return next.handle(modifiedReq);
         }
+      }
+
+      if(req.url.startsWith(`${apiUrl}`)){
+        return next.handle(req).pipe(
+          catchError((err) => {
+            if (err.status === 401) {
+              this.router.navigate(['/user/login']);
+            } else {
+              this.errorServie.setError(err);
+              this.router.navigate(['/error']);
+            }
+    
+            return [err];
+          })
+          )
       }
   
       // For other requests or if the conditions are not met, pass the original request
