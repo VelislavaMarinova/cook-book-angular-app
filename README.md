@@ -10,7 +10,7 @@ The new recipes are added to the existing list, and the page might scroll to sho
 
 - Detailed Recipe Information: Logged-in users can access detailed information about each recipe, including ingredients, preparation steps, and cooking instructions.
 
-- User Authentication and Profiles: The platform provides a secure authentication system. Users can create a profile, log in, and access personalized features based on their account.
+- User Authentication and Profiles: The platform provides an authentication system. Users can create a profile, log in, and access personalized features based on their account.
 
 - Adding New Recipes: Authenticated users can contribute to the platform by adding their own recipes. They can provide all necessary details, such as ingredients, preparation time, and images.
 
