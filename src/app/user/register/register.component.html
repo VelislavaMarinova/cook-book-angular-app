@@ -10,7 +10,7 @@
             </div>
           
             <div class="form col-8 col-sm-8 col-md-8 col-lg-6 col-xl-4 offset-xl-1 register">
-                <div *ngIf="isLoading">
+                <div *ngIf="isLoading" class="loader">
                     <app-loader/>
                 </div>
                 <div class="alert alert-danger" *ngIf="error">
