@@ -4,8 +4,9 @@ input.ng-invalid.ng-touched{
 input.ng-valid.ng-touched{
     border: 1px solid green
 }
-.help-block{
-    color: red
+.input-help{
+    color: red;
+    font-weight: 600;
 }
 
 

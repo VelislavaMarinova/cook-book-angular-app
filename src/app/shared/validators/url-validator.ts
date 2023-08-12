@@ -1,6 +1,5 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-// Custom validator function
 export function imageUrlValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const value = control.value;

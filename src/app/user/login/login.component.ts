@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
     }
 
     const { email, password } = this.loginForm.value;
-    // console.log(email, password);
 
     this.userService.login(email, password).subscribe(
       {
@@ -55,8 +54,5 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
         }
       });
-    //todo reset
-
-
   }
 }
