@@ -8,3 +8,9 @@
 .card-info .card-text{
   font-size: 0.8rem;
 }
+.card-title-responsive{display: none;}
+@media (max-width: 1200px){
+  .card-title-responsive{display: block;}
+.card-title-large{display: none;}
+}
+

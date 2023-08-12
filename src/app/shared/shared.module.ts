@@ -6,14 +6,12 @@ import { NoRecipesComponent } from './no-recipes/no-recipes.component';
 import { RouterModule } from '@angular/router';
 import { RecipeItemComponent } from './recipe-item/recipe-item.component';
 
-
-
 @NgModule({
   declarations: [
     LoaderComponent,
     ShortenPipe,
     NoRecipesComponent,
-    RecipeItemComponent
+    RecipeItemComponent,
   ],
   imports: [
     CommonModule,
@@ -23,7 +21,7 @@ import { RecipeItemComponent } from './recipe-item/recipe-item.component';
     LoaderComponent,
     ShortenPipe,
     NoRecipesComponent,
-    RecipeItemComponent
+    RecipeItemComponent,
   ]
 })
 export class SharedModule { }

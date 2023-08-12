@@ -12,6 +12,10 @@ textarea.ng-invalid.ng-touched{
 .add-recipe-form label{
   font-weight: 600;
 }
+
+.new-category{
+  font-weight: 600;
+}
 /* .add-recipe-form{
   background-color: antiquewhite;
   border-radius: 16px;

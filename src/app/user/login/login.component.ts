@@ -1,15 +1,16 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { emailValidator } from 'src/app/shared/validators/email-validator';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-
+export class LoginComponent implements OnInit {
+  loginForm!: FormGroup
   isLoading = false;
   error: string | undefined;
 
@@ -19,13 +20,24 @@ export class LoginComponent {
     private router: Router
   ) { }
 
-  onSubmit(loginForm: NgForm): void {
+  ngOnInit(): void {
+    this.createForm()
+  }
 
-    if (loginForm.invalid) {
+  createForm() {
+    this.loginForm = new FormGroup({
+      'email': new FormControl('', [Validators.required, emailValidator()]),
+      'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
+    })
+  }
+
+  onSubmit(): void {
+
+    if (this.loginForm.invalid) {
       return;
     }
 
-    const { email, password } = loginForm.value;
+    const { email, password } = this.loginForm.value;
     // console.log(email, password);
 
     this.userService.login(email, password).subscribe(
@@ -35,16 +47,16 @@ export class LoginComponent {
           console.log(resData);
           this.isLoading = false;
           this.router.navigate(['/']);
-          loginForm.reset()
-          
+          this.loginForm.reset()
+
         }, error: errorMessage => {
           console.log(errorMessage);
           this.error = errorMessage
           this.isLoading = false;
         }
       });
-      //todo reset
-      
+    //todo reset
+
 
   }
 }
