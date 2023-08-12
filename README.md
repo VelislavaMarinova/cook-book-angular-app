@@ -17,6 +17,7 @@ The new recipes are added to the existing list, and the page might scroll to sho
 - Category Creation: If users discover a missing category, they have the ability to add new recipe categories, ensuring a diverse and comprehensive collection.
 
 - Recipe Editing and Deletion: Users have full control over recipes they've contributed. They can edit the details of their recipes, including updating ingredients or modifying cooking instructions. Additionally, users can choose to remove their own recipes from the platform.
+- Profile: In this project, every registered user has a dedicated profile page that allows them to manage and interact with their own recipes. 
 
 ![CookBook](src/assets/readme.png)
 ![CookBook](src/assets/readme2.png) ![CookBook](src/assets/readme-responsive.png)
