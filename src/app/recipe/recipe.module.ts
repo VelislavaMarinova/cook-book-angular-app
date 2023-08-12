@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewRecipeComponent } from './new-recipe/new-recipe.component';
+import { NewRecipeComponent } from '../new-recipe/new-recipe.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { RecipeRoutingModule } from './recipe-routing.module';
@@ -15,7 +15,6 @@ import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 
 @NgModule({
   declarations: [
-    NewRecipeComponent,
     RecipeDetailsComponent,
     RecipesMainComponent,
     RecipeStartComponent,

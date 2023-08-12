@@ -12,6 +12,7 @@ import { AppInterceptor } from './app.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     HomeComponent,
     NotFoundComponent,
     AddCategoryComponent,
+    NewRecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +29,6 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     CoreModule,
     HttpClientModule,
     SharedModule,
-
-    
     FormsModule,
     ReactiveFormsModule
   ],

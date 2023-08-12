@@ -9,18 +9,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [AuthActivate],
-    // data: {
-    //   showAfterAuth: false
-    // }
+ 
   },
   {
     path: 'register',
     component: RegisterComponent,
-    // canActivate: [AuthActivate],
-    // data: {
-    //   showAfterAuth: false
-    // }
   },
 ];
 
