@@ -42,19 +42,6 @@ const routes: Routes = [
     ]
   },
 
-  //  {
-  //   path: 'edit-recipe/:recipeId',
-  //   component: EditRecipeComponent,
-  //   // canActivate: [AuthGuard]
-
-  // },
-  // {
-  //   path: 'delete-recipe/:recipeId',
-  //   component: DeleteRecipeComponent,
-  //   // canActivate: [AuthGuard]
-
-  // },
-
 ];
 
 @NgModule({
