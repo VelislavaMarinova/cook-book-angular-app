@@ -5,8 +5,6 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 
-
-
 @NgModule({
   declarations: [
     HeaderComponent,

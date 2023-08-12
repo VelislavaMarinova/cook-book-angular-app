@@ -16,8 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private router: Router
-  ) { }
-
+  ) { };
 
   ngOnInit() {
 
@@ -34,4 +33,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.userSub.unsubscribe()
   }
-}
+};

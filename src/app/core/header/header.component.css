@@ -11,17 +11,16 @@ width: 100px;
 opacity: 0.7;
 border-radius: 16px;
 }
+
 .nav-link{
     border-radius: 8px;
     border: 1px solid transparent;
 }
+
 .nav-link:hover{
-    /* background-color: var(--color-brown); */
     border: 1px solid var(--color-brown);
-   
 }
+
 .active{
     border: 1px solid var(--color-brown);
-
-    
 }
