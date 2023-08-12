@@ -6,36 +6,41 @@
         (ngSubmit)="onSubmit()"
     >
         <div class="form-group col-md-6">
-            <label for="catName">Category Name</label>
+            <label for="catName" class="mb-2">Category Name</label>
             <input
                 type="text"
                 id="catName"
                 name="catName"
-                class="form-control"
+                class="form-control mb-2"
                 placeholder="Category name"
                 formControlName="catName"
             >
-            <!-- <span
-                    class="help-block"
-                    *ngIf="!password.valid && password.touched"
-                >Please enter a vailid password!</span> -->
+            <small
+            class="input-help form-text "
+            *ngIf="!categoryForm.get('catName')?.valid && categoryForm.get('catName')?.touched"
+        >Category name is required!</small>
 
 
         </div>
         <div class="form-group col-md-6">
-            <label for="imageUrl">Category Image</label>
+            <label for="imageUrl" class="mb-2">Category Image</label>
             <input
                 type="text"
                 id="imageUrl"
                 name="imageUrl"
-                class="form-control"
+                class="form-control mb-2"
                 placeholder="Category image URL"
                 formControlName="imageUrl"
             >
-            <!-- <span
-                    class="help-block"
-                    *ngIf="!password.valid && password.touched"
-                >Please enter a vailid password!</span> -->
+            <small
+            class="input-help form-text "
+            *ngIf="!categoryForm.get('imageUrl')?.valid && categoryForm.get('imageUrl')?.touched"
+        ><ng-container *ngIf="categoryForm.get('imageUrl')?.hasError('required')">
+            Image URL is required!
+        </ng-container>
+        <ng-container *ngIf="categoryForm.get('imageUrl')?.hasError('invalidImageUrl')">
+            Invalid Image URL. Make sure it starts with 'http://' or 'https://'.
+        </ng-container></small>
         </div>
         <button
             type="submit"

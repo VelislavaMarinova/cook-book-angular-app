@@ -1,0 +1,14 @@
+input.ng-invalid.ng-touched{
+    border: 1px solid red
+  }
+  textarea.ng-invalid.ng-touched{
+    border: 1px solid red
+  }
+  .category-form .input-help{
+    color: red;
+    font-weight: 600;
+  }
+
+.category-form label{
+    font-weight: 600;
+}
