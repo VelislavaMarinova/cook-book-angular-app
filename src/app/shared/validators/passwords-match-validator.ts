@@ -7,8 +7,6 @@ export function passwordsMatchValidator(): ValidatorFn {
     
         if (password && rePass && password.value !== rePass.value) {
           rePass.setErrors({ passwordsNotMatch: true });
-        } else {
-          rePass?.setErrors(null);
         }
     
         return null;
