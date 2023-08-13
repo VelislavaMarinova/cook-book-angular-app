@@ -9,7 +9,8 @@ import { ApiService } from 'src/app/api.service';
 })
 export class DeleteRecipeComponent {
 @Input() recipeId: string | undefined;
-@Input() recipeTitle: string | undefined
+@Input() recipeTitle: string | undefined;
+
 
   constructor(
     private apiService: ApiService,
@@ -17,8 +18,14 @@ export class DeleteRecipeComponent {
   ) { }
 
   onDelete() {
-    this.apiService.deleteRecipe(this.recipeId!).subscribe();
-    this.router.navigate([`/recipes`]);
+    this.apiService.deleteRecipe(this.recipeId!).subscribe({
+      next:()=>{
+        this.router.navigate([`/recipes`]);
+      },
+      error: (err)=>{
+          console.log(`Error ${err.message}`);
+      }
+    });
   }
 
 }
